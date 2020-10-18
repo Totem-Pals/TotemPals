@@ -1,19 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/LevelGate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Friends/Friend.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/icon.png-ec880de02d5dab0aa15458af9d6c53ed.stex"
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 32 )
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 271, 504 )
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../Camera2D")
+position = Vector2( 280, 392 )
 
 [node name="Floors" type="Node" parent="."]
 
@@ -25,10 +26,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor2" type="StaticBody2D" parent="Floors"]
 position = Vector2( 335, 567 )
@@ -38,10 +39,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor2"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor2"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor3" type="StaticBody2D" parent="Floors"]
 position = Vector2( 399, 567 )
@@ -51,10 +52,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor3"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor3"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor4" type="StaticBody2D" parent="Floors"]
 position = Vector2( 544, 480 )
@@ -64,10 +65,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor4"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor4"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor5" type="StaticBody2D" parent="Floors"]
 position = Vector2( 672, 480 )
@@ -77,10 +78,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor5"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor5"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor6" type="StaticBody2D" parent="Floors"]
 position = Vector2( 864, 480 )
@@ -90,10 +91,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor6"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor6"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor7" type="StaticBody2D" parent="Floors"]
 position = Vector2( 1056, 480 )
@@ -103,10 +104,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor7"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor7"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor8" type="StaticBody2D" parent="Floors"]
 position = Vector2( 1120, 480 )
@@ -116,10 +117,10 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor8"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor8"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Floor9" type="StaticBody2D" parent="Floors"]
 position = Vector2( 1184, 480 )
@@ -129,14 +130,35 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Floors/Floor9"]
 modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 1 )
+texture = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/Floor9"]
-shape = SubResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 271, 504 )
-current = true
+shape = SubResource( 2 )
 
 [node name="Friend" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1120, 416 )
+position = Vector2( 400, 488 )
+
+[node name="Friend2" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.423529, 0.0862745, 0.831373, 1 )
+position = Vector2( 672, 416 )
+
+[node name="LevelGate" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1184, 424 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 144, 424 )
+
+[node name="Label" type="Label" parent="Node2D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 91.0
+margin_bottom = 99.0
+text = "A for left
+D for right
+space to jump
+L to swap
+K to drop
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}

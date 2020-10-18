@@ -9,12 +9,31 @@ const JUMP_HEIGHT = -550
 var motion = Vector2()
 var double_jump = 0
 
+var identity = "Player"
+
+export var next_evolution = 3
+export var current_height = 1
+onready var Evolve = load("res://Player/Player" + str(next_evolution) + ".tscn")
+onready var Devolve = load("res://Player/Player" + str(current_height - 1) + ".tscn")
+
+
+
 var group = []
-var added_friend = preload("res://Friends/Test_Friend.tscn")
 
 func _physics_process(delta):
 	motion.y += GRAVITY
 	var friction = false
+	
+	if Input.is_action_just_pressed("switch"):
+		if current_height > 2:
+			var placeholder = get_child(1).position
+			for i in range(1,current_height-1):
+				get_child(i).position = get_child(i+1).position
+			get_child(current_height-1).position = placeholder
+	
+	if Input.is_action_just_pressed("drop"):
+		if current_height > 1:
+			got_a_friend(Devolve)
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
@@ -24,13 +43,7 @@ func _physics_process(delta):
 		motion.x = max(motion.x - ACCELERATION , -MAX_SPEED)
 		$Sprite.flip_h = true
 		
-	if Input.is_action_just_pressed("test_add_friend"):
-		print (position)
-		var friend_instance = added_friend.instance()
-		add_child(friend_instance)
-		#global_position.y += 128
-		friend_instance.global_position.x = global_position.x - 64
-		pass
+	
 
 	else:
 
@@ -53,3 +66,9 @@ func _physics_process(delta):
 	
 	
 	motion = move_and_slide(motion,UP)
+	
+func got_a_friend(change = Evolve):
+	var evolve_instance = change.instance()
+	get_parent().add_child(evolve_instance, true)
+	evolve_instance.global_position = global_position
+	queue_free()
