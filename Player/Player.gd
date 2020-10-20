@@ -26,10 +26,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("switch"):
 		if current_height > 2:
-			var placeholder = get_child(1).position
-			for i in range(1,current_height-1):
+			var placeholder = get_child(0).position
+			for i in range(current_height-2):
 				get_child(i).position = get_child(i+1).position
-			get_child(current_height-1).position = placeholder
+			get_child(current_height-2).position = placeholder
 	
 	if Input.is_action_just_pressed("drop"):
 		if current_height > 1:
