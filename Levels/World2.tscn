@@ -4,7 +4,6 @@
 [ext_resource path="res://Levels/Floor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/icon.png" type="Texture" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.3333, 32 )
 
@@ -272,13 +271,15 @@ D for right
 
 "
 
-[node name="Node2D2" type="Node2D" parent="." index="7"]
+[node name="Word Labels" type="Node" parent="." index="7"]
+
+[node name="Node2D2" type="Node2D" parent="Word Labels" index="0"]
 position = Vector2( 896, 384 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Node2D2" index="0"]
+[node name="Label" type="Label" parent="Word Labels/Node2D2" index="0"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "space to jump"
@@ -286,13 +287,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D3" type="Node2D" parent="." index="8"]
+[node name="Node2D3" type="Node2D" parent="Word Labels" index="1"]
 position = Vector2( 2176, 832 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Node2D3" index="0"]
+[node name="Label" type="Label" parent="Word Labels/Node2D3" index="0"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "jump on new characters"
@@ -300,13 +301,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D4" type="Node2D" parent="." index="9"]
+[node name="Node2D4" type="Node2D" parent="Word Labels" index="2"]
 position = Vector2( 2496, 832 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Node2D4" index="0"]
+[node name="Label" type="Label" parent="Word Labels/Node2D4" index="0"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "L to swap
@@ -316,13 +317,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D5" type="Node2D" parent="." index="10"]
+[node name="Node2D5" type="Node2D" parent="Word Labels" index="3"]
 position = Vector2( 2968, 736 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="Node2D5" index="0"]
+[node name="Label" type="Label" parent="Word Labels/Node2D5" index="0"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "exit"
