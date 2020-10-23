@@ -2,10 +2,10 @@
 extends KinematicBody2D
 
 const UP = Vector2(0,-1)
-const GRAVITY = 20
+const GRAVITY = 40
 const ACCELERATION = 50
-const MAX_SPEED = 200
-const JUMP_HEIGHT = -550
+const MAX_SPEED = 550
+const JUMP_HEIGHT = -900
 var motion = Vector2()
 var double_jump = 0
 
@@ -52,7 +52,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
-			double_jump = 1
+			double_jump = 0 # Set to 0 to disable double jump, or 1 to re-enable for testing purposes.
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:
