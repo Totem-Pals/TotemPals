@@ -11,27 +11,28 @@ var double_jump = 0
 
 var identity = "Player"
 
-export var current_height = 1
+export var num_friends = 0 setget ,get_num_friends
 
 
 var group = []
 var friends = []
 onready var currentRectSize : Vector2 = $Sprite.get_rect().size
 
+func _ready():
+	update_collision_shapes()
+
 func _physics_process(_delta):
 	motion.y += GRAVITY
 	var friction = false
 	
 	if Input.is_action_just_pressed("switch"):
-		if current_height > 2:
+		if self.num_friends > 2:
 			var placeholder = get_child(0).position
-			for i in range(current_height-2):
+			for i in range(num_friends - 2):
 				get_child(i).position = get_child(i+1).position
-			get_child(current_height-2).position = placeholder
+			get_child(num_friends - 2).position = placeholder
 	
-	if Input.is_action_just_pressed("drop"):
-		if current_height > 1:
-			got_a_friend(0)
+
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
@@ -65,8 +66,13 @@ func _physics_process(_delta):
 	
 	motion = move_and_slide(motion,UP)
 	
-func got_a_friend(_change = 0):
-	pass
+
+
+func _input(event):
+	if event.is_action_pressed("drop"):
+		if self.num_friends > 0:
+			drop_friend()
+
 
 
 func _on_FriendCollisionArea_area_entered(area):
@@ -80,21 +86,33 @@ func add_friend(area):
 	add_child(newFriend)
 	friends.append(newFriend)
 	
-	move_child($FriendCollisionArea, get_child_count() - 1)
-	
 	newFriend.texture = friendSprite.texture
 	# var friendAbility = area.get_ability()
 	
 	var friendSpriteRect : Rect2 = friendSprite.get_rect()
-	newFriend.position.y = currentRectSize.y
-	currentRectSize += friendSpriteRect.size
+	newFriend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
 	
 	update_collision_shapes()
-
+	
 	area.queue_free()
 
+func update_rect_size():
+	currentRectSize = $Sprite.get_rect().size
+	for friend in friends:
+		currentRectSize += friend.get_rect().size
+
 func update_collision_shapes():
-	$FriendCollisionArea.position.y = currentRectSize.y - ($Sprite.texture.get_height() / 2)
-	$CollisionShape2D.position.y = currentRectSize.y / 2 - ($Sprite.texture.get_height() / 2)
+	update_rect_size()
 	
-	$CollisionShape2D.shape.height = (currentRectSize.y) - (currentRectSize.x / 2)
+	$FriendCollisionArea.position.y = currentRectSize.y - ($Sprite.texture.get_height() / 2)
+	$CollisionShape2D.position.y = (currentRectSize.y / 2) - ($Sprite.texture.get_height() / 2)
+	
+	$CollisionShape2D.shape.height = currentRectSize.y - ($CollisionShape2D.shape.radius * 2)
+
+func drop_friend():
+	friends[friends.size() - 1].queue_free()
+	friends.remove(friends.size() - 1)
+	update_collision_shapes()
+
+func get_num_friends() -> int:
+	return friends.size()
