@@ -11,8 +11,8 @@ const ABILITIES = {
 	"glide": 1<<1
 }
 const friend_type = {
-	"GreenPal.tscn": "green",
-	"RedPal.tscn": "red"
+	"GreenPal.tscn": "double_jump",
+	"RedPal.tscn": ""
 }
 var motion = Vector2()
 var double_jump = 0
@@ -131,11 +131,13 @@ func get_num_friends() -> int:
 	
 
 func update_abilities(totem, drop):
+	## For Testing Only to prevent totems in development from crashing
+	if(totem == ""):
+		return
 	var ability_key = 0
-	match(totem):
-		"green":
-			ability_key = ABILITIES["double_jump"]
-			double_jump = 0
+	ability_key = ABILITIES[totem]
+	if(self.get(totem)):
+		set(totem, 0)
 	if(drop):
 		has_ability ^= ability_key
 	else:
