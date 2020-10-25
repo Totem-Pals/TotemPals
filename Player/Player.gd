@@ -2,38 +2,37 @@
 extends KinematicBody2D
 
 const UP = Vector2(0,-1)
-const GRAVITY = 40
+const GRAVITY = 20
 const ACCELERATION = 50
-const MAX_SPEED = 550
-const JUMP_HEIGHT = -900
+const MAX_SPEED = 200
+const JUMP_HEIGHT = -550
 var motion = Vector2()
 var double_jump = 0
 
 var identity = "Player"
 
-export var next_evolution = 3
-export var current_height = 1
-onready var Evolve = load("res://Player/Player" + str(next_evolution) + ".tscn")
-onready var Devolve = load("res://Player/Player" + str(current_height - 1) + ".tscn")
-
+export var num_friends = 0 setget ,get_num_friends
 
 
 var group = []
+var friends = []
+onready var currentRectSize : Vector2 = $Sprite.get_rect().size
 
-func _physics_process(delta):
+func _ready():
+	update_collision_shapes()
+
+func _physics_process(_delta):
 	motion.y += GRAVITY
 	var friction = false
 	
 	if Input.is_action_just_pressed("switch"):
-		if current_height > 2:
+		if self.num_friends > 2:
 			var placeholder = get_child(0).position
-			for i in range(current_height-2):
+			for i in range(num_friends - 2):
 				get_child(i).position = get_child(i+1).position
-			get_child(current_height-2).position = placeholder
+			get_child(num_friends - 2).position = placeholder
 	
-	if Input.is_action_just_pressed("drop"):
-		if current_height > 1:
-			got_a_friend(Devolve)
+
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
@@ -52,7 +51,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
-			double_jump = 0 # Set to 0 to disable double jump, or 1 to re-enable for testing purposes.
+			double_jump = 1
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:
@@ -67,8 +66,53 @@ func _physics_process(delta):
 	
 	motion = move_and_slide(motion,UP)
 	
-func got_a_friend(change = Evolve):
-	var evolve_instance = change.instance()
-	get_parent().add_child(evolve_instance, true)
-	evolve_instance.global_position = global_position
-	queue_free()
+
+
+func _input(event):
+	if event.is_action_pressed("drop"):
+		if self.num_friends > 0:
+			drop_friend()
+
+
+
+func _on_FriendCollisionArea_area_entered(area):
+	# Have to wait for current physics frame to be done.
+	call_deferred("add_friend", area)
+
+
+func add_friend(area):
+	var friendSprite : Sprite = area.get_node("Sprite")
+	var newFriend = load(area.totemVersion).instance()
+	add_child(newFriend)
+	friends.append(newFriend)
+	
+	newFriend.texture = friendSprite.texture
+	# var friendAbility = area.get_ability()
+	
+	var friendSpriteRect : Rect2 = friendSprite.get_rect()
+	newFriend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
+	
+	update_collision_shapes()
+	
+	area.queue_free()
+
+func update_rect_size():
+	currentRectSize = $Sprite.get_rect().size
+	for friend in friends:
+		currentRectSize += friend.get_rect().size
+
+func update_collision_shapes():
+	update_rect_size()
+	
+	$FriendCollisionArea.position.y = currentRectSize.y - ($Sprite.texture.get_height() / 2)
+	$CollisionShape2D.position.y = (currentRectSize.y / 2) - ($Sprite.texture.get_height() / 2)
+	
+	$CollisionShape2D.shape.height = currentRectSize.y - ($CollisionShape2D.shape.radius * 2)
+
+func drop_friend():
+	friends[friends.size() - 1].queue_free()
+	friends.remove(friends.size() - 1)
+	update_collision_shapes()
+
+func get_num_friends() -> int:
+	return friends.size()

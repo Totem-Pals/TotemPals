@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/redFriend.png" type="Texture" id=1]
-[ext_resource path="res://Friends/Friend.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Friends/NeutralFriend/Friend.tscn" type="PackedScene" id=2]
 
 [node name="RedFriend" instance=ExtResource( 2 )]
+totemVersion = "res://Friends/TotemPal/RedPal.tscn"
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )

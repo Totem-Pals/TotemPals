@@ -2,10 +2,13 @@
 
 [ext_resource path="res://Assets/background.png" type="Texture" id=1]
 [ext_resource path="res://Tilesets/greyboxing.tres" type="TileSet" id=2]
-[ext_resource path="res://Player/Player1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Friends/Friend.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Friends/NeutralFriend/GreenFriend.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/LevelGate.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Friends/RedFriend.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Friends/NeutralFriend/RedFriend.tscn" type="PackedScene" id=6]
+
+
+
 
 [node name="World3" type="Node2D"]
 __meta__ = {

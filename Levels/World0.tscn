@@ -1,19 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Levels/LevelGate.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player/Player1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Friends/Friend.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/background.png" type="Texture" id=4]
-[ext_resource path="res://Friends/RedFriend.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Tilesets/TestGrass.tres" type="TileSet" id=7]
 
 [node name="World" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-margin_left = -693.321
-margin_top = -4.00452
-margin_right = 2491.68
-margin_bottom = 1021.0
+margin_left = -704.0
+margin_right = 2481.0
+margin_bottom = 1025.0
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -25,14 +21,8 @@ position = Vector2( 280, 392 )
 
 [node name="Floors" type="Node" parent="."]
 
-[node name="GreenFriend" parent="." instance=ExtResource( 3 )]
-position = Vector2( 400, 496.658 )
-
-[node name="RedFriend" parent="." instance=ExtResource( 5 )]
-position = Vector2( 670.665, 396.654 )
-
 [node name="LevelGate" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1178.66, 391.964 )
+position = Vector2( 1184, 424 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 144, 424 )
@@ -51,9 +41,3 @@ K to drop
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 7 )
-cell_size = Vector2( 48, 48 )
-format = 1
-tile_data = PoolIntArray( 589837, 0, 196608, 589838, 0, 196610, 589841, 0, 196608, 589842, 0, 196610, 589846, 0, 196608, 589847, 0, 196609, 589848, 0, 196610, 720900, 0, 196608, 720901, 0, 196609, 720902, 0, 196609, 720903, 0, 196609, 720904, 0, 196609, 720905, 0, 196610 )
