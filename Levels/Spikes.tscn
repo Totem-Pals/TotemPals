@@ -14,7 +14,8 @@ build_mode = 1
 polygon = PoolVector2Array( -34.6437, 34.6474, -23.4064, 17.2296, -13.5737, 32.5873, -10.2962, 32.5873, 0.0983353, 7.30333, 10.3992, 32.4936, 13.3958, 32.4936, 23.603, 17.2296, 34.4658, 34.1792 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
-build_mode = 1
-polygon = PoolVector2Array( -34.6437, 34.6474, -23.4064, 17.2296, -13.5737, 32.5873, -10.2962, 32.5873, 0.0983353, 7.30333, 10.3992, 32.4936, 13.3958, 32.4936, 23.603, 17.2296, 34.4658, 34.1792 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -34.5914, 34.6029, -23.6779, 16.1384, -12.8233, 32.5382, -10.9946, 32.5382, -0.140015, 6.40469, 11.0095, 32.3022, 12.4843, 32.3022, 23.4568, 16.3154, 34.3704, 33.954 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
