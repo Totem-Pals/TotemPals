@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/World0.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Spikes.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Friends/NeutralFriend/GreenFriend.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Friends/NeutralFriend/RedFriend.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tilesets/forest_brick.tres" type="TileSet" id=6]
@@ -102,3 +103,6 @@ position = Vector2( 788.711, 465.29 )
 
 [node name="RedFriend" parent="." index="11" instance=ExtResource( 5 )]
 position = Vector2( 1279.86, 450.691 )
+
+[node name="Spikes" parent="." index="12" instance=ExtResource( 2 )]
+position = Vector2( 576.083, 475.841 )

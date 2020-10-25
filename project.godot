@@ -21,15 +21,7 @@ config/icon="res://Assets/icon.png"
 
 [autoload]
 
-PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
-UserData="*res://addons/github-integration/scripts/user_data.gd"
 SoundsMain="*res://Autoload/SoundsMain.tscn"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "github-integration" )
 
 [input]
 
