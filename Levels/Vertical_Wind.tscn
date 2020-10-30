@@ -6,6 +6,7 @@
 extents = Vector2( 153, 360 )
 
 [node name="Vertical_Wind" type="Area2D"]
+collision_layer = 2147483652
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
