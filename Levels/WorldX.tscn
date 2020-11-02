@@ -19,7 +19,10 @@ margin_top = -1.5874
 margin_right = 2481.79
 margin_bottom = 1023.41
 
-[node name="LevelGate" parent="." index="2"]
+[node name="Player" parent="." index="1"]
+position = Vector2( 923.107, 179.359 )
+
+[node name="LevelGate" parent="." index="3"]
 position = Vector2( 1185.59, 412.888 )
 Next_scene = "res://Levels/World2.tscn"
 
@@ -54,7 +57,7 @@ position = Vector2( 794.883, 254.731 )
 position = Vector2( 725.961, 254.731 )
 
 [node name="GreenFriend" parent="." index="12" instance=ExtResource( 7 )]
-position = Vector2( 620.297, 181.858 )
+position = Vector2( 620.047, 207.358 )
 
 [node name="Moving_Platform" parent="." index="13" instance=ExtResource( 8 )]
 position = Vector2( 1313, 224 )
@@ -65,6 +68,3 @@ position = Vector2( 1466.21, -142.965 )
 
 [node name="PushableBlock" parent="." index="15" instance=ExtResource( 10 )]
 position = Vector2( 1057.32, 191.446 )
-
-[node name="Player" parent="." index="16"]
-position = Vector2( 923.107, 179.359 )
