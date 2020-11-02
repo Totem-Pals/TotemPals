@@ -1,7 +1,7 @@
 extends Node2D
 
 export var length = 1
-export var speed = 4
+export var duration = 4
 export var x_endpoint = 160
 export var y_endpoint = 0
 
@@ -20,11 +20,11 @@ func _ready():
 	_on_Tween2_tween_all_completed()
 	
 func _on_Tween_tween_all_completed():
-	tween2.interpolate_property(child2D, "position", Vector2(x_endpoint, y_endpoint), Vector2(0, 0), speed,
+	tween2.interpolate_property(child2D, "position", Vector2(x_endpoint, y_endpoint), Vector2(0, 0), duration,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween2.start()
 	
 func _on_Tween2_tween_all_completed():
-	tween.interpolate_property(child2D, "position", Vector2(0, 0), Vector2(x_endpoint, y_endpoint), speed,
+	tween.interpolate_property(child2D, "position", Vector2(0, 0), Vector2(x_endpoint, y_endpoint), duration,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
