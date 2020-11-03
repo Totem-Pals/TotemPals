@@ -53,10 +53,10 @@ func _physics_process(_delta):
 		friction = true
 		
 	if is_on_floor():
+		if(has_ability&ABILITIES["double_jump"] and not double_jump):
+				double_jump = 1
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
-			if(has_ability&ABILITIES["double_jump"]):
-				double_jump = 1
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:
