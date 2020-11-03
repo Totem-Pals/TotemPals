@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainMenu/LevelSelect/LevelSelect.gd" type="Script" id=1]
+[ext_resource path="res://Levels/WorldX.tscn" type="PackedScene" id=2]
+
+[node name="LevelSelect" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+levels = [ ExtResource( 2 ), null, null, null, null, null, null, null, null, null ]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+
+[node name="LevelButtonContainer" type="GridContainer" parent="ScrollContainer"]
+margin_right = 1010.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 9
+columns = 8
