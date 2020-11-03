@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Friends/NeutralFriend/Friend.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/greenFriend.png" type="Texture" id=2]
+[ext_resource path="res://Assets/jump_lad.png" type="Texture" id=2]
 
 [node name="GreenFriend" instance=ExtResource( 1 )]
 totemVersion = "res://Friends/TotemPal/GreenPal.tscn"

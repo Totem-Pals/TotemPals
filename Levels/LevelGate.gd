@@ -10,6 +10,5 @@ export var Next_scene = "res://Levels/World3.tscn"
 #		if body.name.begins_with("Player"):
 #			get_tree().reload_current_scene()
 #
-func _on_LevelGate_body_entered(_body):
 	var __ = get_tree().change_scene(Next_scene)
 

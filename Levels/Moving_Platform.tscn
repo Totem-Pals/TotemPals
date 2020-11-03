@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tilesets/forest_brick2.tres" type="TileSet" id=1]
+[ext_resource path="res://Levels/Moving_Platform.gd" type="Script" id=2]
+
+[node name="Moving_Platform" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Node2D"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 196608, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196610 )
+
+[node name="Tween" type="Tween" parent="Node2D"]
+
+[node name="Tween2" type="Tween" parent="Node2D"]
+[connection signal="tween_all_completed" from="Node2D/Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Node2D/Tween2" to="." method="_on_Tween2_tween_all_completed"]

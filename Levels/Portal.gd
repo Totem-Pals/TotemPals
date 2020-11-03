@@ -3,14 +3,21 @@ extends Area2D
 export var Entry = true
 export var PartnerLoc : NodePath
 onready var teleportPosition = get_node(PartnerLoc).position
+export var OneWay = true
 
 func _ready():
 	pass
 
 func _on_Portal_body_entered(body):
+	#32 is the rect size of the current main character
+	var portal_offset = body.currentRectSize.y - 32
 	if Entry:
-		body.position = teleportPosition
+		body.position = teleportPosition - Vector2(0, portal_offset)
 
-func _on_Portal_body_exited(_body):
-	Entry = !Entry
+func _on_Portal_body_exited(body):
+	if !OneWay:
+		if !Entry:
+			Entry = true
+		else:
+			Entry = false
 
