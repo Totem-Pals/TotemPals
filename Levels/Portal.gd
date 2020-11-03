@@ -1,18 +1,16 @@
 extends Area2D
 
 export var Entry = true
-export var PartnerLoc = Vector2(0,0)
+export var PartnerLoc : NodePath
+onready var teleportPosition = get_node(PartnerLoc).position
 
 func _ready():
 	pass
 
 func _on_Portal_body_entered(body):
 	if Entry:
-		body.position = PartnerLoc
+		body.position = teleportPosition
 
-func _on_Portal_body_exited(body):
-	if !Entry:
-		Entry = true
-	else:
-		Entry = false
+func _on_Portal_body_exited(_body):
+	Entry = !Entry
 

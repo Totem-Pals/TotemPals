@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Portal.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9.46848, 19.8083 )
+extents = Vector2( 30.0772, 34.8724 )
 
 [node name="Portal" type="Area2D"]
 collision_layer = 4
