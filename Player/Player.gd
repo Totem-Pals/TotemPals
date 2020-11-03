@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 const UP = Vector2(0,-1)
 const GRAVITY = 20
+const GLIDE_SPEED = 120 #Higher is faster
 const ACCELERATION = 50
 const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
@@ -12,7 +13,7 @@ const ABILITIES = {
 }
 const friend_type = {
 	"GreenPal.tscn": "double_jump",
-	"RedPal.tscn": ""
+	"RedPal.tscn": "glide"
 }
 var motion = Vector2()
 var double_jump = 0
@@ -42,20 +43,13 @@ func _physics_process(_delta):
 				get_child(i).position = get_child(i+1).position
 			get_child(num_friends - 2).position = placeholder
 	
-
-	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
 		$Sprite.flip_h = false
-
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - ACCELERATION , -MAX_SPEED)
 		$Sprite.flip_h = true
-		
-	
-
 	else:
-
 		friction = true
 		
 	if is_on_floor():
@@ -66,14 +60,13 @@ func _physics_process(_delta):
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:
-
 		if Input.is_action_just_pressed("ui_up") and double_jump == 1:
 			motion.y = JUMP_HEIGHT
 			double_jump = 0
-		
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
-	
+		if has_ability&ABILITIES["glide"] and Input.is_action_pressed("ui_up") and  motion.y >= 0:
+			motion.y = GLIDE_SPEED 
 	
 	motion = move_and_slide(motion,UP)
 	
