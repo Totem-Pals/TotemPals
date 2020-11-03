@@ -34,7 +34,10 @@ tile_data = PoolIntArray( 458770, 0, 196608, 458771, 0, 196609, 458772, 0, 19661
 
 [node name="Portal" parent="." index="5" instance=ExtResource( 3 )]
 position = Vector2( 388, 478 )
-PartnerLoc = Vector2( 966, 474 )
+PartnerLoc = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Portal" index="2"]
+position = Vector2( 658.885, -106.634 )
 
 [node name="Portal2" parent="." index="6" instance=ExtResource( 3 )]
 position = Vector2( 966, 474 )
