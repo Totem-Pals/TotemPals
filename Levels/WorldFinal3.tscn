@@ -161,19 +161,21 @@ y_endpoint = -416
 
 [node name="PortalA" parent="." index="8" instance=ExtResource( 7 )]
 position = Vector2( -1696, -832 )
-PartnerLoc = Vector2( -1664, 896 )
+PartnerLoc = NodePath("../PortalAexit")
 
 [node name="PortalAexit" parent="." index="9" instance=ExtResource( 7 )]
 position = Vector2( -1664, 896 )
 Entry = false
+PartnerLoc = NodePath("../PortalA")
 
 [node name="PortalB" parent="." index="10" instance=ExtResource( 7 )]
 position = Vector2( -1424, 992 )
-PartnerLoc = Vector2( -1424, 2016 )
+PartnerLoc = NodePath("../PortalBexit")
 
 [node name="PortalBexit" parent="." index="11" instance=ExtResource( 7 )]
 position = Vector2( -1424, 2016 )
 Entry = false
+PartnerLoc = NodePath("../PortalB")
 
 [node name="Springboard" parent="." index="12" instance=ExtResource( 8 )]
 position = Vector2( -2016, 2112 )

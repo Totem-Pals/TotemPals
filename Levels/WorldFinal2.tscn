@@ -186,8 +186,9 @@ position = Vector2( 4864, 1072 )
 
 [node name="PortalEntry" parent="." index="9" instance=ExtResource( 8 )]
 position = Vector2( 2816, 2016 )
-PartnerLoc = Vector2( 3136, 1760 )
+PartnerLoc = NodePath("../PortalExit")
 
 [node name="PortalExit" parent="." index="10" instance=ExtResource( 8 )]
 position = Vector2( 3136, 1760 )
 Entry = false
+PartnerLoc = NodePath("../PortalEntry")

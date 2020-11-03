@@ -9,7 +9,7 @@
 [node name="WorldFinal" instance=ExtResource( 1 )]
 
 [node name="Player" parent="." index="1"]
-position = Vector2( 2944, 928 )
+position = Vector2( 2944, 960 )
 
 [node name="LevelGate" parent="." index="2"]
 position = Vector2( 4864, 1728 )
@@ -21,19 +21,21 @@ tile_data = PoolIntArray( -458708, 0, 0, -458707, 0, 1, -458706, 0, 1, -458705, 
 
 [node name="PortalEntry" parent="." index="4" instance=ExtResource( 3 )]
 position = Vector2( 2624, 384 )
-PartnerLoc = Vector2( 2048, 64 )
+PartnerLoc = NodePath("../PortalExit")
 
 [node name="PortalExit" parent="." index="5" instance=ExtResource( 3 )]
 position = Vector2( 2048, 64 )
 Entry = false
+PartnerLoc = NodePath("../PortalEntry")
 
 [node name="PortalEntry2" parent="." index="6" instance=ExtResource( 3 )]
 position = Vector2( 2432, 992 )
-PartnerLoc = Vector2( 3424, 704 )
+PartnerLoc = NodePath("../PortalExit2")
 
 [node name="PortalExit2" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( 3424, 704 )
 Entry = false
+PartnerLoc = NodePath("../PortalEntry2")
 
 [node name="Moving_Platform" parent="." index="8" instance=ExtResource( 4 )]
 position = Vector2( 2720, 192 )
