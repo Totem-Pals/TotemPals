@@ -1,9 +1,12 @@
 extends Node2D
 
-export var length = 1
+export var length = 3
 export var duration = 4
 export var x_endpoint = 160
 export var y_endpoint = 0
+export var idle_at_end = 0.5
+
+var follow = Vector2.ZERO
 
 onready var child2D = $Node2D
 onready var tile = $Node2D/TileMap
@@ -20,11 +23,14 @@ func _ready():
 	_on_Tween2_tween_all_completed()
 	
 func _on_Tween_tween_all_completed():
-	tween2.interpolate_property(child2D, "position", Vector2(x_endpoint, y_endpoint), Vector2(0, 0), duration,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween2.interpolate_property(self, "follow", Vector2(x_endpoint, y_endpoint), Vector2(0, 0), duration,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, idle_at_end)
 	tween2.start()
 	
 func _on_Tween2_tween_all_completed():
-	tween.interpolate_property(child2D, "position", Vector2(0, 0), Vector2(x_endpoint, y_endpoint), duration,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "follow", Vector2(0, 0), Vector2(x_endpoint, y_endpoint), duration,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, idle_at_end)
 	tween.start()
+	
+func _physics_process(delta):
+	child2D.position = child2D.position.linear_interpolate(follow, 0.075)

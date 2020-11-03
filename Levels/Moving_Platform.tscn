@@ -10,6 +10,7 @@ extents = Vector2( 80, 16 )
 script = ExtResource( 2 )
 
 [node name="Node2D" type="KinematicBody2D" parent="."]
+motion/sync_to_physics = true
 
 [node name="TileMap" type="TileMap" parent="Node2D"]
 tile_set = ExtResource( 1 )
