@@ -37,7 +37,7 @@ points = PoolVector2Array( 0, 32, 10.9311, 14.2352, 21.2571, 26.5148, 35.2112, 2
 [node name="WorldFinal" instance=ExtResource( 1 )]
 
 [node name="Player" parent="." index="1"]
-position = Vector2( 1504, 960 )
+position = Vector2( 4032, 960 )
 
 [node name="LevelGate" parent="." index="2"]
 position = Vector2( -384, 800 )
