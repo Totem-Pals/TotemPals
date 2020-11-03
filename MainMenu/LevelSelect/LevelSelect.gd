@@ -13,5 +13,9 @@ func _ready():
 
 func _on_level_select_button_pressed(var btn_id : int):
 	# Change scene
+	if levels[btn_id] == null:
+		printerr("Empty level selected!")
+		return
+	
 	if not get_tree().change_scene_to(levels[btn_id]) == OK:
 		printerr("Error loding scene from level select!")
