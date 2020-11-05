@@ -29,6 +29,10 @@ var stack = []
 var friends = []
 onready var currentRectSize : Vector2 = $Sprite.get_rect().size
 
+var lastCheckpoint = null
+
+signal on_death
+
 func _ready():
 	update_collision_shapes()
 
@@ -76,7 +80,8 @@ func _input(event):
 	if event.is_action_pressed("drop"):
 		if self.num_friends > 0:
 			drop_friend()
-
+	if event.is_action_pressed("DEBUG_DIE"):
+		on_death()
 
 
 func _on_FriendCollisionArea_area_entered(area):
@@ -101,6 +106,22 @@ func add_friend(area):
 	update_abilities(stack.back(), false)
 	area.queue_free()
 
+func load_friend(var friend_in):
+	var friend = friend_in.duplicate()
+	var friendSprite : Sprite = friend
+	add_child(friend)
+	friends.append(friend)
+	stack.append(friend_type[friend.filename.get_file()])
+	
+	friend.texture = friendSprite.texture
+	
+	
+	var friendSpriteRect : Rect2 = friendSprite.get_rect()
+	friend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
+	
+	update_collision_shapes()
+	update_abilities(stack.back(), false)
+	
 func update_rect_size():
 	currentRectSize = $Sprite.get_rect().size
 	for friend in friends:
@@ -135,4 +156,11 @@ func update_abilities(totem, drop):
 		has_ability ^= ability_key
 	else:
 		has_ability |= ability_key
+
+
+func on_death():
+	if lastCheckpoint == null:
+		return
 	
+	lastCheckpoint.respawnPlayer()
+	queue_free()

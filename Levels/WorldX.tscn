@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/World0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/forest_brick2.tres" type="TileSet" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Levels/Moving_Platform.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Vertical_Wind.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/PushableBlock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/Checkpoint.tscn" type="PackedScene" id=11]
 
 [node name="World" instance=ExtResource( 1 )]
 
@@ -74,3 +75,6 @@ position = Vector2( 1466.21, -142.965 )
 
 [node name="PushableBlock" parent="." index="15" instance=ExtResource( 10 )]
 position = Vector2( 1057.32, 191.446 )
+
+[node name="Checkpoint" parent="." index="17" instance=ExtResource( 11 )]
+position = Vector2( 1212.26, 148.165 )
