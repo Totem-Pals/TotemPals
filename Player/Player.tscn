@@ -33,4 +33,11 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="CheckpointArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointArea"]
+shape = SubResource( 2 )
 [connection signal="area_entered" from="FriendCollisionArea" to="." method="_on_FriendCollisionArea_area_entered"]
