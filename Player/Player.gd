@@ -9,11 +9,18 @@ const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
 const ABILITIES = {
 	"double_jump": 1<<0,
-	"glide": 1<<1
+	"glide": 1<<1,
+	"strong": 2<<1
 }
 const friend_type = {
 	"GreenPal.tscn": "double_jump",
-	"RedPal.tscn": "glide"
+	"RedPal.tscn": "glide",
+	"StrongPal.tscn": "strong"
+}
+const friend_map = {
+	"GreenPal.tscn": "res://Friends/NeutralFriend/GreenFriend.tscn",
+	"RedPal.tscn": "res://Friends/NeutralFriend/RedFriend.tscn",
+	"StrongPal.tscn": "res://Friends/NeutralFriend/StrongFriend.tscn"
 }
 var motion = Vector2()
 var double_jump = 0
@@ -23,7 +30,7 @@ var identity = "Player"
 export var num_friends = 0 setget ,get_num_friends
 
 var has_ability = 0
-
+var drop_timer = 0
 
 var stack = []
 var friends = []
@@ -39,25 +46,26 @@ func _ready():
 func _physics_process(_delta):
 	motion.y += GRAVITY
 	var friction = false
-	
 	if Input.is_action_just_pressed("switch"):
-		if self.num_friends > 2:
-			var placeholder = get_child(0).position
-			for i in range(num_friends - 2):
-				get_child(i).position = get_child(i+1).position
-			get_child(num_friends - 2).position = placeholder
+		if self.num_friends > 1:
+			switch_friend()
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
 		$Sprite.flip_h = false
+		for friend in friends:
+			friend.flip_h=false
+
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - ACCELERATION , -MAX_SPEED)
 		$Sprite.flip_h = true
+		for friend in friends:
+			friend.flip_h=true
 	else:
 		friction = true
 		
 	if is_on_floor():
-		if(has_ability&ABILITIES["double_jump"] and not double_jump):
+		if(check_ability("double_jump") and not double_jump):
 				double_jump = 1
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
@@ -69,7 +77,7 @@ func _physics_process(_delta):
 			double_jump = 0
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
-		if has_ability&ABILITIES["glide"] and Input.is_action_pressed("ui_up") and  motion.y >= 0:
+		if check_ability("glide") and Input.is_action_pressed("ui_up") and  motion.y >= 0:
 			motion.y = GLIDE_SPEED 
 	
 	motion = move_and_slide(motion,UP)
@@ -86,7 +94,8 @@ func _input(event):
 
 func _on_FriendCollisionArea_area_entered(area):
 	# Have to wait for current physics frame to be done.
-	call_deferred("add_friend", area)
+	if( OS.get_ticks_msec() - drop_timer > 500):
+		call_deferred("add_friend", area)
 
 
 func add_friend(area):
@@ -94,14 +103,11 @@ func add_friend(area):
 	var newFriend = load(area.totemVersion).instance()
 	add_child(newFriend)
 	friends.append(newFriend)
+	newFriend.flip_h = $Sprite.flip_h
 	stack.append(friend_type[area.totemVersion.get_file()])
-	
 	newFriend.texture = friendSprite.texture
-
-	
 	var friendSpriteRect : Rect2 = friendSprite.get_rect()
 	newFriend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
-	
 	update_collision_shapes()
 	update_abilities(stack.back(), false)
 	area.queue_free()
@@ -112,13 +118,9 @@ func load_friend(var friend_in):
 	add_child(friend)
 	friends.append(friend)
 	stack.append(friend_type[friend.filename.get_file()])
-	
 	friend.texture = friendSprite.texture
-	
-	
 	var friendSpriteRect : Rect2 = friendSprite.get_rect()
 	friend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
-	
 	update_collision_shapes()
 	update_abilities(stack.back(), false)
 	
@@ -136,10 +138,29 @@ func update_collision_shapes():
 
 func drop_friend():
 	friends[friends.size() - 1].queue_free()
-	friends.pop_back()
+	var back = friends.pop_back()
 	update_abilities(stack.pop_back(), true)
 	update_collision_shapes()
+	var dropped_friend = load(friend_map[back.filename.get_file()])
+	var friend = dropped_friend.instance()
+	friend.position.x = self.position.x
+	friend.position.y = self.position.y + currentRectSize.y
+	drop_timer = OS.get_ticks_msec()
+	
+	var world = get_tree().get_root().get_child(1)
+	world.add_child(friend)
 
+func switch_friend():
+	var top = friends.pop_front()
+	var current_position = top.position.y
+	for friend in friends:
+		friend.position.y = current_position
+		current_position += $Sprite.texture.get_height()
+	top.position.y = current_position
+	friends.push_back(top)
+	var bottom_stack = stack.pop_front()
+	stack.push_back(bottom_stack)
+	
 func get_num_friends() -> int:
 	return friends.size()
 	
@@ -157,6 +178,11 @@ func update_abilities(totem, drop):
 	else:
 		has_ability |= ability_key
 
+func check_ability(ability):
+	if(ABILITIES.has(ability)):
+		return has_ability&ABILITIES[ability]
+	print("Bad Ability Passed: "+ability)
+	return false
 
 func on_death():
 	if lastCheckpoint == null:
