@@ -50,9 +50,14 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
 		$Sprite.flip_h = false
+		for friend in friends:
+			friend.flip_h=false
+
 	elif Input.is_action_pressed("ui_left"):
 		motion.x = max(motion.x - ACCELERATION , -MAX_SPEED)
 		$Sprite.flip_h = true
+		for friend in friends:
+			friend.flip_h=true
 	else:
 		friction = true
 		
@@ -94,6 +99,7 @@ func add_friend(area):
 	var newFriend = load(area.totemVersion).instance()
 	add_child(newFriend)
 	friends.append(newFriend)
+	newFriend.flip_h = $Sprite.flip_h
 	stack.append(friend_type[area.totemVersion.get_file()])
 	
 	newFriend.texture = friendSprite.texture
