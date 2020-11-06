@@ -9,15 +9,18 @@ const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
 const ABILITIES = {
 	"double_jump": 1<<0,
-	"glide": 1<<1
+	"glide": 1<<1,
+	"strong": 2<<1
 }
 const friend_type = {
 	"GreenPal.tscn": "double_jump",
-	"RedPal.tscn": "glide"
+	"RedPal.tscn": "glide",
+	"StrongPal.tscn": "strong"
 }
 const friend_map = {
 	"GreenPal.tscn": "res://Friends/NeutralFriend/GreenFriend.tscn",
-	"RedPal.tscn": "res://Friends/NeutralFriend/RedFriend.tscn"
+	"RedPal.tscn": "res://Friends/NeutralFriend/RedFriend.tscn",
+	"StrongPal.tscn": "res://Friends/NeutralFriend/StrongFriend.tscn"
 }
 var motion = Vector2()
 var double_jump = 0
@@ -62,7 +65,7 @@ func _physics_process(_delta):
 		friction = true
 		
 	if is_on_floor():
-		if(has_ability&ABILITIES["double_jump"] and not double_jump):
+		if(check_ability("double_jump") and not double_jump):
 				double_jump = 1
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
@@ -74,7 +77,7 @@ func _physics_process(_delta):
 			double_jump = 0
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
-		if has_ability&ABILITIES["glide"] and Input.is_action_pressed("ui_up") and  motion.y >= 0:
+		if check_ability("glide") and Input.is_action_pressed("ui_up") and  motion.y >= 0:
 			motion.y = GLIDE_SPEED 
 	
 	motion = move_and_slide(motion,UP)
@@ -175,6 +178,11 @@ func update_abilities(totem, drop):
 	else:
 		has_ability |= ability_key
 
+func check_ability(ability):
+	if(ABILITIES.has(ability)):
+		return has_ability&ABILITIES[ability]
+	print("Bad Ability Passed: "+ability)
+	return false
 
 func on_death():
 	if lastCheckpoint == null:
