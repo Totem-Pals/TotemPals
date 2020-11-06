@@ -44,11 +44,8 @@ func _physics_process(_delta):
 	motion.y += GRAVITY
 	var friction = false
 	if Input.is_action_just_pressed("switch"):
-		if self.num_friends > 2:
-			var placeholder = get_child(0).position
-			for i in range(num_friends - 2):
-				get_child(i).position = get_child(i+1).position
-			get_child(num_friends - 2).position = placeholder
+		if self.num_friends > 1:
+			switch_friend()
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
@@ -106,11 +103,8 @@ func add_friend(area):
 	newFriend.flip_h = $Sprite.flip_h
 	stack.append(friend_type[area.totemVersion.get_file()])
 	newFriend.texture = friendSprite.texture
-
-	
 	var friendSpriteRect : Rect2 = friendSprite.get_rect()
 	newFriend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
-	
 	update_collision_shapes()
 	update_abilities(stack.back(), false)
 	area.queue_free()
@@ -152,8 +146,17 @@ func drop_friend():
 	
 	var world = get_tree().get_root().get_child(1)
 	world.add_child(friend)
-	world.add_child(friend)
-	
+
+func switch_friend():
+	var top = friends.pop_front()
+	var current_position = top.position.y
+	for friend in friends:
+		friend.position.y = current_position
+		current_position += $Sprite.texture.get_height()
+	top.position.y = current_position
+	friends.push_back(top)
+	var bottom_stack = stack.pop_front()
+	stack.push_back(bottom_stack)
 	
 func get_num_friends() -> int:
 	return friends.size()
