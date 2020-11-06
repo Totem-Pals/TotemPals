@@ -15,6 +15,10 @@ const friend_type = {
 	"GreenPal.tscn": "double_jump",
 	"RedPal.tscn": "glide"
 }
+const friend_map = {
+	"GreenPal.tscn": "res://Friends/NeutralFriend/GreenFriend.tscn",
+	"RedPal.tscn": "res://Friends/NeutralFriend/RedFriend.tscn"
+}
 var motion = Vector2()
 var double_jump = 0
 
@@ -23,7 +27,7 @@ var identity = "Player"
 export var num_friends = 0 setget ,get_num_friends
 
 var has_ability = 0
-
+var drop_timer = 0
 
 var stack = []
 var friends = []
@@ -39,7 +43,6 @@ func _ready():
 func _physics_process(_delta):
 	motion.y += GRAVITY
 	var friction = false
-	
 	if Input.is_action_just_pressed("switch"):
 		if self.num_friends > 2:
 			var placeholder = get_child(0).position
@@ -91,7 +94,8 @@ func _input(event):
 
 func _on_FriendCollisionArea_area_entered(area):
 	# Have to wait for current physics frame to be done.
-	call_deferred("add_friend", area)
+	if( OS.get_ticks_msec() - drop_timer > 500):
+		call_deferred("add_friend", area)
 
 
 func add_friend(area):
@@ -101,7 +105,6 @@ func add_friend(area):
 	friends.append(newFriend)
 	newFriend.flip_h = $Sprite.flip_h
 	stack.append(friend_type[area.totemVersion.get_file()])
-	
 	newFriend.texture = friendSprite.texture
 
 	
@@ -118,13 +121,9 @@ func load_friend(var friend_in):
 	add_child(friend)
 	friends.append(friend)
 	stack.append(friend_type[friend.filename.get_file()])
-	
 	friend.texture = friendSprite.texture
-	
-	
 	var friendSpriteRect : Rect2 = friendSprite.get_rect()
 	friend.position.y = (currentRectSize.y) + (friendSpriteRect.size.y / 2) - ($Sprite.get_rect().size.y / 2)
-	
 	update_collision_shapes()
 	update_abilities(stack.back(), false)
 	
@@ -142,10 +141,20 @@ func update_collision_shapes():
 
 func drop_friend():
 	friends[friends.size() - 1].queue_free()
-	friends.pop_back()
+	var back = friends.pop_back()
 	update_abilities(stack.pop_back(), true)
 	update_collision_shapes()
-
+	var dropped_friend = load(friend_map[back.filename.get_file()])
+	var friend = dropped_friend.instance()
+	friend.position.x = self.position.x
+	friend.position.y = self.position.y + currentRectSize.y
+	drop_timer = OS.get_ticks_msec()
+	
+	var world = get_tree().get_root().get_child(1)
+	world.add_child(friend)
+	world.add_child(friend)
+	
+	
 func get_num_friends() -> int:
 	return friends.size()
 	
