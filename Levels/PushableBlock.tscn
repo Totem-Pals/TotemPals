@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/PushableBlock.gd" type="Script" id=2]
 
 [sub_resource type="RayShape2D" id=1]
-length = 80.0
+length = 160.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.8425, 31.839 )
@@ -18,12 +18,15 @@ mode = 1
 
 [node name="Area2D" type="Area2D" parent="RigidBody2D"]
 collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+position = Vector2( 0, 16 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+position = Vector2( 0, 16 )
 rotation = -1.5708
 shape = SubResource( 1 )
 

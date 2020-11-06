@@ -22,6 +22,7 @@ margin_bottom = 1023.41
 
 [node name="Player" parent="." index="1"]
 position = Vector2( 923.107, 179.359 )
+collision_mask = 4
 
 [node name="LevelGate" parent="." index="3"]
 position = Vector2( 1185.59, 412.888 )
@@ -68,7 +69,6 @@ position = Vector2( 620.047, 207.358 )
 
 [node name="Moving_Platform" parent="." index="13" instance=ExtResource( 8 )]
 position = Vector2( 1313, 224 )
-length = 3
 
 [node name="Vertical_Wind" parent="." index="14" instance=ExtResource( 9 )]
 position = Vector2( 1466.21, -142.965 )
