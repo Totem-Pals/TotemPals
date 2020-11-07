@@ -1,6 +1,6 @@
-extends Sprite
+extends KinematicBody2D
 
-const SPEED = 400
+const SPEED = -400
 
 var velocity = Vector2(SPEED, 0)
 
@@ -17,13 +17,10 @@ func init(x,y,flip):
 	else:
 		velocity = Vector2(SPEED*-1, 0)
 
-func _process(delta):
-	move(delta)
-	check_range(delta)
-	
-func move(delta):
-	global_position += velocity * delta
-	
-func check_range(delta):
-	if(velocity.x * delta > 3000):
+func _physics_process(delta):
+	var hit = move_and_collide(velocity * delta)
+	if hit:
 		queue_free()
+	
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

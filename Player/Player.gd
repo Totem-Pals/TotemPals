@@ -172,9 +172,8 @@ func shoot():
 	var bullet = load("res://Objects/Bullet.tscn")
 	var b = bullet.instance()
 	for friend in friends:
-		if(friend.filename.get_file() ==  friend_type["StrongPal.tscn"]):
-			b.init(friend.position.x + 32, friend.position.y, $Sprite.flip_h)
-	print(get_parent().name)
+		if(friend.filename.get_file() ==  "GunPal.tscn"):
+			b.init(self.position.x, self.position.y + friend.position.y, $Sprite.flip_h)
 	get_parent().add_child(b)
 	
 
