@@ -22,7 +22,7 @@ margin_right = 2481.79
 margin_bottom = 1023.41
 
 [node name="Player" parent="." index="1"]
-position = Vector2( 1157.7, 189.461 )
+position = Vector2( 1157.7, 195.118 )
 
 [node name="LevelGate" parent="." index="3"]
 position = Vector2( 1185.59, 412.888 )
@@ -65,10 +65,10 @@ position = Vector2( 794.883, 254.731 )
 position = Vector2( 725.961, 254.731 )
 
 [node name="StrongFriend" parent="." index="12" instance=ExtResource( 12 )]
-position = Vector2( 1235.6, 190.972 )
+position = Vector2( 1289.34, 200.871 )
 
 [node name="GreenFriend" parent="." index="13" instance=ExtResource( 7 )]
-position = Vector2( 591.985, 200.623 )
+position = Vector2( 1205.05, 200.623 )
 
 [node name="Moving_Platform" parent="." index="14" instance=ExtResource( 8 )]
 position = Vector2( 1313, 224 )
