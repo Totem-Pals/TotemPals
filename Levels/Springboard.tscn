@@ -3,8 +3,8 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Springboard.gd" type="Script" id=2]
 
-[sub_resource type="RayShape2D" id=1]
-length = 47.7987
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 27.5443, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 23.0922, 29.8299 )
@@ -46,6 +46,7 @@ script = ExtResource( 2 )
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+position = Vector2( 0, -34.8061 )
 rotation = 3.14159
 shape = SubResource( 1 )
 
