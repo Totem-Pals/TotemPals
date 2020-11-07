@@ -7,20 +7,23 @@ const GLIDE_SPEED = 120 #Higher is faster
 const ACCELERATION = 50
 const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
-const ABILITIES = {
-	"double_jump": 1<<0,
-	"glide": 1<<1,
-	"strong": 2<<1
+const abilities = {
+	"double_jump": false,
+	"glide": false,
+	"strong": false,
+	"shoots": false
 }
 const friend_type = {
 	"GreenPal.tscn": "double_jump",
 	"RedPal.tscn": "glide",
-	"StrongPal.tscn": "strong"
+	"StrongPal.tscn": "strong",
+	"GunPal.tscn": "shoots"
 }
 const friend_map = {
 	"GreenPal.tscn": "res://Friends/NeutralFriend/GreenFriend.tscn",
 	"RedPal.tscn": "res://Friends/NeutralFriend/RedFriend.tscn",
-	"StrongPal.tscn": "res://Friends/NeutralFriend/StrongFriend.tscn"
+	"StrongPal.tscn": "res://Friends/NeutralFriend/StrongFriend.tscn",
+	"GunPal.tscn": "res://Friends/NeutralFriend/GunFriend.tscn"
 }
 var motion = Vector2()
 var double_jump = 0
@@ -29,7 +32,6 @@ var identity = "Player"
 
 export var num_friends = 0 setget ,get_num_friends
 
-var has_ability = 0
 var drop_timer = 0
 
 var stack = []
@@ -46,9 +48,6 @@ func _ready():
 func _physics_process(_delta):
 	motion.y += GRAVITY
 	var friction = false
-	if Input.is_action_just_pressed("switch"):
-		if self.num_friends > 1:
-			switch_friend()
 	
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION,MAX_SPEED)
@@ -65,7 +64,7 @@ func _physics_process(_delta):
 		friction = true
 		
 	if is_on_floor():
-		if(check_ability("double_jump") and not double_jump):
+		if(has_ability("double_jump") and not double_jump):
 				double_jump = 1
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
@@ -77,7 +76,7 @@ func _physics_process(_delta):
 			double_jump = 0
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
-		if check_ability("glide") and Input.is_action_pressed("ui_up") and  motion.y >= 0:
+		if has_ability("glide") and Input.is_action_pressed("ui_up") and  motion.y >= 0:
 			motion.y = GLIDE_SPEED 
 	
 	motion = move_and_slide(motion,UP)
@@ -88,6 +87,11 @@ func _input(event):
 	if event.is_action_pressed("drop"):
 		if self.num_friends > 0:
 			drop_friend()
+	if Input.is_action_just_pressed("switch"):
+		if self.num_friends > 1:
+			switch_friend()
+	if Input.is_action_just_pressed("shoot"):
+			shoot()
 	if event.is_action_pressed("DEBUG_DIE"):
 		on_death()
 
@@ -147,7 +151,7 @@ func drop_friend():
 	friend.position.y = self.position.y + currentRectSize.y
 	drop_timer = OS.get_ticks_msec()
 	
-	var world = get_tree().get_root().get_child(1)
+	var world = get_parent()
 	world.add_child(friend)
 
 func switch_friend():
@@ -163,6 +167,15 @@ func switch_friend():
 	
 func get_num_friends() -> int:
 	return friends.size()
+
+func shoot():
+	var bullet = load("res://Objects/Bullet.tscn")
+	var b = bullet.instance()
+	for friend in friends:
+		if(friend.filename.get_file() ==  friend_type["StrongPal.tscn"]):
+			b.init(friend.position.x + 32, friend.position.y, $Sprite.flip_h)
+	print(get_parent().name)
+	get_parent().add_child(b)
 	
 
 func update_abilities(totem, drop):
@@ -170,17 +183,17 @@ func update_abilities(totem, drop):
 	if(totem == ""):
 		return
 	var ability_key = 0
-	ability_key = ABILITIES[totem]
+	ability_key = abilities[totem]
 	if(self.get(totem)):
 		set(totem, 0)
 	if(drop):
-		has_ability ^= ability_key
+		abilities[totem] = false
 	else:
-		has_ability |= ability_key
+		abilities[totem] = true
 
-func check_ability(ability):
-	if(ABILITIES.has(ability)):
-		return has_ability&ABILITIES[ability]
+func has_ability(ability):
+	if(abilities.has(ability)):
+		return abilities[ability]
 	print("Bad Ability Passed: "+ability)
 	return false
 
