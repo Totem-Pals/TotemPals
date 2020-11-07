@@ -120,8 +120,6 @@ func load_friend(var friend_in):
 	var friendSprite : Sprite = friend
 	add_child(friend)
 	friends.append(friend)
-	var fileName = friend.filename
-	var file = fileName.get_file()
 	stack.append(friend_type[friend.filename.get_file()])
 	friend.texture = friendSprite.texture
 	var friendSpriteRect : Rect2 = friendSprite.get_rect()
