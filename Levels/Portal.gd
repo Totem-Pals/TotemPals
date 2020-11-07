@@ -17,7 +17,7 @@ func _on_Portal_body_entered(body):
 	if Entry:
 		body.position = teleportPosition - Vector2(0, portal_offset)
 
-func _on_Portal_body_exited(body):
+func _on_Portal_body_exited(_body):
 	if !OneWay:
 		if !Entry:
 			Entry = true
