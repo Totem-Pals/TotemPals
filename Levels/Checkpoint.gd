@@ -7,6 +7,7 @@ onready var playerObject = preload("res://Player/Player.tscn")
 func _on_Area2D_area_entered(area):
 	var player = area.get_parent()
 	player.lastCheckpoint = self
+	
 	friends = player.friends
 	
 	self.modulate = Color.red
@@ -22,6 +23,8 @@ func respawnPlayer():
 	
 	for friend in friends:
 		newPlayer.load_friend(friend)
+	
+	friends = newPlayer.friends
 	
 	newPlayer.lastCheckpoint = self
 	#newPlayer.update_abilities()

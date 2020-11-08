@@ -14,5 +14,5 @@ func _on_Area2D_body_entered(body):
 	Animate.play("Bounce", -1, -4, true)
 	woooosh()
 
-func _on_Area2D_body_exited(body):
+func _on_Area2D_body_exited(_body):
 	Thing_to_bounce = null
