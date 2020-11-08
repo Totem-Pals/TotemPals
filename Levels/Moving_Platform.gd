@@ -43,7 +43,7 @@ func _on_Tween2_tween_all_completed():
 #	child2D.position = child2D.position.linear_interpolate(follow, 0.075)
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	if !running:
 		_on_Tween2_tween_all_completed()
 		running = true

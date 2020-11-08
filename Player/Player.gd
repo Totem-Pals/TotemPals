@@ -40,7 +40,6 @@ onready var currentRectSize : Vector2 = $Sprite.get_rect().size
 
 var lastCheckpoint = null
 
-signal on_death
 
 func _ready():
 	update_collision_shapes()
