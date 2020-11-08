@@ -68,6 +68,8 @@ func _physics_process(_delta):
 				double_jump = 1
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
+			if(get_floor_velocity().y < 0):
+				position.y -= 1
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.2)
 	else:
@@ -80,7 +82,6 @@ func _physics_process(_delta):
 			motion.y = GLIDE_SPEED 
 	
 	motion = move_and_slide(motion,UP)
-	
 
 
 func _input(event):
