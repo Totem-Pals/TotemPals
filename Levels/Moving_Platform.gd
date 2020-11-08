@@ -1,7 +1,7 @@
 extends Node2D
 
 export var length = 3
-export var duration = 4
+export(float) var duration = 4
 export var x_endpoint = 160
 export var y_endpoint = 0
 export var idle_at_end = 0.5
