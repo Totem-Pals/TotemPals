@@ -3,8 +3,8 @@ extends KinematicBody2D
 
 const UP = Vector2(0,-1)
 const GRAVITY = 20
-const GLIDE_SPEED = 120 #Higher is faster
 const ACCELERATION = 50
+const GLIDE_SPEED = 120
 const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
 const abilities = {
@@ -27,6 +27,11 @@ const friend_map = {
 }
 var motion = Vector2()
 var double_jump = 0
+var glide_speed = GLIDE_SPEED setget set_glide, get_glide
+func set_glide(speed):
+	glide_speed = speed
+func get_glide():
+	return glide_speed
 
 var identity = "Player"
 
@@ -77,11 +82,14 @@ func _physics_process(_delta):
 			double_jump = 0
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
-		if has_ability("glide") and Input.is_action_pressed("ui_up") and  motion.y >= 0:
-			motion.y = GLIDE_SPEED 
-	
+		if has_ability("glide") and Input.is_action_pressed("ui_up"):
+			if glide_speed == GLIDE_SPEED and motion.y >= 0:
+				motion.y = glide_speed
+			else:
+				motion.y = glide_speed
+	print(motion.y)
 	motion = move_and_slide(motion,UP)
-
+	print(motion.y)
 
 func _input(event):
 	if event.is_action_pressed("drop"):
@@ -193,6 +201,7 @@ func update_abilities(totem, drop):
 func has_ability(ability):
 	if(abilities.has(ability)):
 		return abilities[ability]
+
 	print("Bad Ability Passed: "+ability)
 	return false
 

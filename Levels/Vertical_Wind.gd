@@ -1,14 +1,14 @@
 extends Area2D
 
-var AffectedObject = null
+const wind_speed = -300
 
 func _physics_process(_delta):
-	# will refactor using signal
-	if AffectedObject:
-		AffectedObject.motion.y = -300
+	return
 
 func _on_Vertical_Wind_body_entered(body):
-	AffectedObject = body
+	if(body.is_in_group("Player")):
+			body.glide_speed = wind_speed
 
-func _on_Vertical_Wind_body_exited(_body):
-	AffectedObject = null
+func _on_Vertical_Wind_body_exited(body):
+	if(body.is_in_group("Player")):
+		body.glide_speed =body.GLIDE_SPEED
