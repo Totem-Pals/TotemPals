@@ -87,9 +87,8 @@ func _physics_process(_delta):
 				motion.y = glide_speed
 			else:
 				motion.y = glide_speed
-	print(motion.y)
+
 	motion = move_and_slide(motion,UP)
-	print(motion.y)
 
 func _input(event):
 	if event.is_action_pressed("drop"):

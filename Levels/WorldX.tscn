@@ -66,6 +66,7 @@ position = Vector2( 725.961, 254.731 )
 
 [node name="StrongFriend" parent="." index="12" instance=ExtResource( 12 )]
 position = Vector2( 1289.34, 200.871 )
+totemVersion = "res://Friends/TotemPal/StrongPal.tscn"
 
 [node name="GreenFriend" parent="." index="13" instance=ExtResource( 7 )]
 position = Vector2( 1205.05, 200.623 )
