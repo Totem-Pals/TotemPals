@@ -83,9 +83,8 @@ func _physics_process(_delta):
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
 		if has_ability("glide") and Input.is_action_pressed("ui_up"):
-			if glide_speed == GLIDE_SPEED and motion.y >= 0:
-				motion.y = glide_speed
-			else:
+			print(motion.y)
+			if glide_speed < 0 or motion.y > 0:
 				motion.y = glide_speed
 
 	motion = move_and_slide(motion,UP)
