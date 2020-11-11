@@ -21,6 +21,7 @@ func _on_Area2D_body_exited(_body):
 
 func _on_Area2D2_body_entered(_body):
 	$RigidBody2D.set_deferred("mode", 1)
+	print("watap")
 
 func _on_Area2D2_body_exited(_body):
 	$RigidBody2D.set_deferred("mode", 2)
