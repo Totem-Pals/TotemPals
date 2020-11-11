@@ -4,7 +4,12 @@ export(Array) var levels
 onready var levelSelectButton = preload("res://MainMenu/LevelSelect/levelSelectButton.tscn")
 
 func _ready():
+	LevelManager.load_game()
+	
 	for i in range(levels.size()):
+		if i > LevelManager.availableLevels:
+			return
+		
 		var newBtn = levelSelectButton.instance()
 		newBtn.text = String(i)
 		
@@ -19,3 +24,5 @@ func _on_level_select_button_pressed(var btn_id : int):
 	
 	if not get_tree().change_scene_to(levels[btn_id]) == OK:
 		printerr("Error loding scene from level select!")
+	
+	LevelManager.currentLevelIndex = btn_id
