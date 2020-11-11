@@ -9,7 +9,7 @@ length = 51.9353
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 22.2875, 28.4381 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "crumble"
 length = 0.6
 tracks/0/type = "value"
@@ -65,6 +65,7 @@ tracks/3/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.890196, 0.0823529, 0.0823529, 1 )
 texture = ExtResource( 1 )
 centered = false
 __meta__ = {
@@ -88,5 +89,5 @@ position = Vector2( 32, 32 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/crumble = SubResource( 4 )
+anims/crumble = SubResource( 3 )
 [connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_Area2D_body_entered"]

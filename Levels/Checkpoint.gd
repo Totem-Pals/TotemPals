@@ -4,6 +4,8 @@ var friends : Array = []
 
 onready var playerObject = preload("res://Player/Player.tscn")
 
+signal reset_objects
+
 func _on_Area2D_area_entered(area):
 	var player = area.get_parent()
 	player.lastCheckpoint = self
@@ -17,6 +19,7 @@ func disable():
 	$Area2D/CollisionShape2D.disabled = true
 
 func respawnPlayer():
+	emit_signal("reset_objects")
 	var newPlayer = playerObject.instance()
 	newPlayer.position = self.position
 	get_parent().add_child(newPlayer)
