@@ -1,7 +1,7 @@
 extends Node2D
 
 export var length = 3
-export var duration = 4
+export(float) var duration = 4
 export var x_endpoint = 160
 export var y_endpoint = 0
 export var idle_at_end = 0.5
@@ -9,6 +9,8 @@ export var auto = true
 
 var follow = Vector2.ZERO
 var running = false
+
+var OriginalPosition = Vector2()
 
 onready var child2D = $Node2D
 onready var tile = $Node2D/TileMap
@@ -28,6 +30,10 @@ func _ready():
 	if auto:
 		running = true
 		_on_Tween2_tween_all_completed()
+	else:
+		var BigDaddy = get_parent()
+		BigDaddy.connect("RespawnHappened", self, "again")
+		OriginalPosition = child2D.position
 	
 func _on_Tween_tween_all_completed():
 	tween2.interpolate_property(child2D, "position", Vector2(x_endpoint, y_endpoint), Vector2(0, 0), duration,
@@ -47,3 +53,12 @@ func _on_Area2D_body_entered(_body):
 	if !running:
 		_on_Tween2_tween_all_completed()
 		running = true
+		
+func again():
+	tween.call_deferred("stop", child2D)
+	tween2.call_deferred("stop", child2D)
+	child2D.position = OriginalPosition
+	running = false
+
+	
+

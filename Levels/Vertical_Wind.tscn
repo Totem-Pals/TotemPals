@@ -3,6 +3,7 @@
 [ext_resource path="res://Levels/Vertical_Wind.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
 extents = Vector2( 153, 360 )
 
 [node name="Vertical_Wind" type="Area2D"]

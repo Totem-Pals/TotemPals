@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Tilesets/forest_brick2.tres" type="TileSet" id=1]
+[ext_resource path="res://Levels/Moving_Platform.gd" type="Script" id=2]
+[ext_resource path="res://Tilesets/spikestemp.tres" type="TileSet" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 80, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 80, 10 )
+
+[node name="Spikey" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="KinematicBody2D" parent="."]
+collision_layer = 4
+motion/sync_to_physics = true
+
+[node name="TileMap" type="TileMap" parent="Node2D"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 512
+collision_mask = 512
+format = 1
+tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196610, 65536, 0, 131075 )
+
+[node name="TileMap2" type="TileMap" parent="Node2D"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 16
+collision_mask = 16
+format = 1
+tile_data = PoolIntArray( -65536, 0, 0, 65535, -1073741824, 0, 1, -1610612736, 0, 131071, -1073741824, 0, 65537, -1610612736, 0, 131072, 1610612736, 0 )
+
+[node name="Tween" type="Tween" parent="Node2D"]
+
+[node name="Tween2" type="Tween" parent="Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2( 80, 16 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+position = Vector2( 80, 0 )
+shape = SubResource( 2 )
+[connection signal="tween_all_completed" from="Node2D/Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="tween_all_completed" from="Node2D/Tween2" to="." method="_on_Tween2_tween_all_completed"]
+[connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_Area2D_body_entered"]
