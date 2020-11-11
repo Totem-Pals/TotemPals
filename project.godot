@@ -22,6 +22,7 @@ config/icon="res://Assets/icon.png"
 [autoload]
 
 SoundsMain="*res://Autoload/SoundsMain.tscn"
+LevelManager="*res://Autoload/levelManager.gd"
 
 [importer_defaults]
 
