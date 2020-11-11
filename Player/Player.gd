@@ -7,7 +7,7 @@ const ACCELERATION = 50
 const GLIDE_SPEED = 120
 const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
-const abilities = {
+var abilities = {
 	"double_jump": false,
 	"glide": false,
 	"strong": false,
