@@ -60,7 +60,6 @@ auto = false
 
 [node name="Moving_Platform2" parent="." index="6" instance=ExtResource( 5 )]
 position = Vector2( 1440, 1056 )
-duration = 6
 x_endpoint = -864
 idle_at_end = 1.5
 auto = false
