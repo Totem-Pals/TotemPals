@@ -6,6 +6,10 @@ onready var playerObject = preload("res://Player/Player.tscn")
 
 signal reset_objects
 
+func _ready():
+	var BigDaddy = get_parent()
+	self.connect("reset_objects", BigDaddy, "listeningForRespawn")
+
 func _on_Area2D_area_entered(area):
 	var player = area.get_parent()
 	player.lastCheckpoint = self

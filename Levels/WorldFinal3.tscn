@@ -104,9 +104,6 @@ tracks/0/keys = {
 
 [node name="WorldFinal" instance=ExtResource( 1 )]
 
-[node name="Player" parent="." index="1"]
-position = Vector2( -1696, -1376 )
-
 [node name="LevelGate" parent="." index="2"]
 position = Vector2( -8032, -1216 )
 
@@ -291,45 +288,43 @@ position = Vector2( -4224, -1216 )
 [node name="Collapse17" parent="CollapseFolder" index="19" instance=ExtResource( 11 )]
 position = Vector2( -4160, -1216 )
 
-[node name="PlatformFolder" type="Node" parent="." index="13"]
-
-[node name="Moving_PlatformA" parent="PlatformFolder" index="0" instance=ExtResource( 5 )]
+[node name="Moving_PlatformA" parent="." index="13" instance=ExtResource( 5 )]
 position = Vector2( -1376, -64 )
 x_endpoint = -320
 y_endpoint = -128
 idle_at_end = 1.0
 
-[node name="Moving_PlatformB" parent="PlatformFolder" index="1" instance=ExtResource( 5 )]
+[node name="Moving_PlatformB" parent="." index="14" instance=ExtResource( 5 )]
 position = Vector2( -992, -192 )
 length = 4
 x_endpoint = 0
 y_endpoint = -416
 idle_at_end = 1.0
 
-[node name="Moving_PlatformC" parent="PlatformFolder" index="2" instance=ExtResource( 5 )]
+[node name="Moving_PlatformC" parent="." index="15" instance=ExtResource( 5 )]
 position = Vector2( -1248, -640 )
 x_endpoint = 0
 y_endpoint = -224
 
-[node name="Moving_PlatformD" parent="PlatformFolder" index="3" instance=ExtResource( 5 )]
+[node name="Moving_PlatformD" parent="." index="16" instance=ExtResource( 5 )]
 position = Vector2( -1152, -1088 )
 length = 2
 x_endpoint = -352
 y_endpoint = 192
 
-[node name="Moving_PlatformE" parent="PlatformFolder" index="4" instance=ExtResource( 5 )]
+[node name="Moving_PlatformE" parent="." index="17" instance=ExtResource( 5 )]
 position = Vector2( -1920, -1120 )
 duration = 20.0
 x_endpoint = -3008
 idle_at_end = 0.2
 auto = false
 
-[node name="Moving_Platform" parent="PlatformFolder" index="5" instance=ExtResource( 5 )]
+[node name="Moving_Platform" parent="." index="18" instance=ExtResource( 5 )]
 position = Vector2( -7776, -352 )
 x_endpoint = -288
 auto = false
 
-[node name="SpringboardFolder" type="Node" parent="." index="14"]
+[node name="SpringboardFolder" type="Node" parent="." index="19"]
 
 [node name="Springboard" parent="SpringboardFolder" index="0" instance=ExtResource( 8 )]
 position = Vector2( -4896, -224 )
@@ -349,16 +344,16 @@ position = Vector2( -8320, -768 )
 [node name="Springboard5" parent="SpringboardFolder" index="5" instance=ExtResource( 8 )]
 position = Vector2( -7392, 736 )
 
-[node name="Checkpoint" parent="." index="15" instance=ExtResource( 13 )]
+[node name="Checkpoint" parent="." index="20" instance=ExtResource( 13 )]
 position = Vector2( -320, 64 )
 
-[node name="Checkpoint2" parent="." index="16" instance=ExtResource( 13 )]
+[node name="Checkpoint2" parent="." index="21" instance=ExtResource( 13 )]
 position = Vector2( -1696, -1248 )
 
-[node name="Checkpoint3" parent="." index="17" instance=ExtResource( 13 )]
+[node name="Checkpoint3" parent="." index="22" instance=ExtResource( 13 )]
 position = Vector2( -5568, -672 )
 
-[node name="Checkpoint4" parent="." index="18" instance=ExtResource( 13 )]
+[node name="Checkpoint4" parent="." index="23" instance=ExtResource( 13 )]
 position = Vector2( -7264, -288 )
 [connection signal="body_entered" from="Door2/DoorButton" to="Door2" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Door2/DoorButton" to="Door2" method="_on_Area2D_body_exited"]

@@ -10,7 +10,7 @@ export var auto = true
 var follow = Vector2.ZERO
 var running = false
 
-onready var OriginalPosition = $Node2D.position
+var OriginalPosition = Vector2()
 
 onready var child2D = $Node2D
 onready var tile = $Node2D/TileMap
@@ -20,9 +20,6 @@ onready var collision = $Node2D/CollisionShape2D
 onready var switch = $Node2D/Area2D/CollisionShape2D
 
 func _ready():
-	tween.stop_all()
-	tween2.stop_all()
-	child2D.position = OriginalPosition
 	for i in range(5 - length):
 		tile.set_cellv(Vector2(4 - i, 0), -1)
 	tile.update_bitmask_region(Vector2(0,0), Vector2(5,0))
@@ -33,6 +30,10 @@ func _ready():
 	if auto:
 		running = true
 		_on_Tween2_tween_all_completed()
+	else:
+		var BigDaddy = get_parent()
+		BigDaddy.connect("RespawnHappened", self, "again")
+		OriginalPosition = child2D.position
 	
 func _on_Tween_tween_all_completed():
 	tween2.interpolate_property(child2D, "position", Vector2(x_endpoint, y_endpoint), Vector2(0, 0), duration,
@@ -52,4 +53,12 @@ func _on_Area2D_body_entered(_body):
 	if !running:
 		_on_Tween2_tween_all_completed()
 		running = true
+		
+func again():
+	tween.call_deferred("stop", child2D)
+	tween2.call_deferred("stop", child2D)
+	child2D.position = OriginalPosition
+	running = false
+
+	
 

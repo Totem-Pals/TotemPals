@@ -201,71 +201,69 @@ position = Vector2( 1376, -1056 )
 [node name="Collapse6" parent="CollapseFolder" index="27" instance=ExtResource( 6 )]
 position = Vector2( 1344, -1056 )
 
-[node name="PlatformFolder" type="Node" parent="." index="7"]
-
-[node name="Moving_Platform" parent="PlatformFolder" index="0" instance=ExtResource( 5 )]
+[node name="Moving_Platform" parent="." index="7" instance=ExtResource( 5 )]
 position = Vector2( 1376, -96 )
 x_endpoint = 0
 y_endpoint = -224
 
-[node name="Moving_Platform2" parent="PlatformFolder" index="1" instance=ExtResource( 5 )]
+[node name="Moving_Platform2" parent="." index="8" instance=ExtResource( 5 )]
 position = Vector2( 1312, -608 )
 x_endpoint = 0
 y_endpoint = -224
 
-[node name="Moving_Platform3" parent="PlatformFolder" index="2" instance=ExtResource( 5 )]
+[node name="Moving_Platform3" parent="." index="9" instance=ExtResource( 5 )]
 position = Vector2( 3744, -352 )
 length = 4
 x_endpoint = -352
 
-[node name="Moving_Platform4" parent="PlatformFolder" index="3" instance=ExtResource( 5 )]
+[node name="Moving_Platform4" parent="." index="10" instance=ExtResource( 5 )]
 position = Vector2( 3872, -288 )
 length = 4
 x_endpoint = 0
 y_endpoint = -480
 
-[node name="Moving_Platform5" parent="PlatformFolder" index="4" instance=ExtResource( 5 )]
+[node name="Moving_Platform5" parent="." index="11" instance=ExtResource( 5 )]
 position = Vector2( 5856, -768 )
 x_endpoint = 0
 y_endpoint = 416
 
-[node name="Moving_Platform6" parent="PlatformFolder" index="5" instance=ExtResource( 5 )]
+[node name="Moving_Platform6" parent="." index="12" instance=ExtResource( 5 )]
 position = Vector2( 6112, -352 )
 x_endpoint = 0
 y_endpoint = -416
 
-[node name="Moving_Platform7" parent="PlatformFolder" index="6" instance=ExtResource( 5 )]
+[node name="Moving_Platform7" parent="." index="13" instance=ExtResource( 5 )]
 position = Vector2( 6912, -352 )
 x_endpoint = 0
 y_endpoint = -416
 
-[node name="Moving_Platform9" parent="PlatformFolder" index="7" instance=ExtResource( 5 )]
+[node name="Moving_Platform9" parent="." index="14" instance=ExtResource( 5 )]
 position = Vector2( 7616, -960 )
 x_endpoint = 288
 y_endpoint = 416
 
-[node name="Moving_Platform10" parent="PlatformFolder" index="8" instance=ExtResource( 5 )]
+[node name="Moving_Platform10" parent="." index="15" instance=ExtResource( 5 )]
 position = Vector2( 8480, -960 )
 x_endpoint = -288
 y_endpoint = 416
 
-[node name="Moving_Platform11" parent="PlatformFolder" index="9" instance=ExtResource( 5 )]
+[node name="Moving_Platform11" parent="." index="16" instance=ExtResource( 5 )]
 position = Vector2( 10784, 0 )
 length = 4
 x_endpoint = 0
 y_endpoint = -384
 
-[node name="Moving_Platform12" parent="PlatformFolder" index="10" instance=ExtResource( 5 )]
+[node name="Moving_Platform12" parent="." index="17" instance=ExtResource( 5 )]
 position = Vector2( 10080, -416 )
 length = 4
 x_endpoint = -384
 
-[node name="Moving_Platform8" parent="PlatformFolder" index="11" instance=ExtResource( 5 )]
+[node name="Moving_Platform8" parent="." index="18" instance=ExtResource( 5 )]
 position = Vector2( 6656, -768 )
 x_endpoint = -288
 y_endpoint = 416
 
-[node name="DoorFolder" type="Node" parent="." index="8"]
+[node name="DoorFolder" type="Node" parent="." index="19"]
 
 [node name="Door" type="Node2D" parent="DoorFolder" index="0"]
 position = Vector2( 3008, -448 )
@@ -363,7 +361,7 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DoorFolder/Door4" index="2"]
 anims/open = SubResource( 5 )
 
-[node name="SpringboardFolder" type="Node" parent="." index="9"]
+[node name="SpringboardFolder" type="Node" parent="." index="20"]
 
 [node name="Springboard" parent="SpringboardFolder" index="0" instance=ExtResource( 9 )]
 position = Vector2( 7456, -608 )
@@ -374,47 +372,47 @@ position = Vector2( 8928, -704 )
 [node name="Springboard3" parent="SpringboardFolder" index="2" instance=ExtResource( 9 )]
 position = Vector2( 9248, -704 )
 
-[node name="StrongFriend" parent="." index="10" instance=ExtResource( 3 )]
+[node name="StrongFriend" parent="." index="21" instance=ExtResource( 3 )]
 position = Vector2( 224, 32 )
 totemVersion = "res://Friends/TotemPal/StrongPal.tscn"
 
-[node name="Collapse" parent="." index="11" instance=ExtResource( 10 )]
+[node name="Collapse" parent="." index="22" instance=ExtResource( 10 )]
 position = Vector2( 1824, -1120 )
 
-[node name="Collapse2" parent="." index="12" instance=ExtResource( 10 )]
+[node name="Collapse2" parent="." index="23" instance=ExtResource( 10 )]
 position = Vector2( 1888, -1120 )
 
-[node name="Collapse3" parent="." index="13" instance=ExtResource( 10 )]
+[node name="Collapse3" parent="." index="24" instance=ExtResource( 10 )]
 position = Vector2( 1952, -1120 )
 
-[node name="Collapse4" parent="." index="14" instance=ExtResource( 10 )]
+[node name="Collapse4" parent="." index="25" instance=ExtResource( 10 )]
 position = Vector2( 1952, -928 )
 
-[node name="Collapse6" parent="." index="15" instance=ExtResource( 10 )]
+[node name="Collapse6" parent="." index="26" instance=ExtResource( 10 )]
 position = Vector2( 4480, -832 )
 
-[node name="Collapse7" parent="." index="16" instance=ExtResource( 10 )]
+[node name="Collapse7" parent="." index="27" instance=ExtResource( 10 )]
 position = Vector2( 4544, -832 )
 
-[node name="Collapse8" parent="." index="17" instance=ExtResource( 10 )]
+[node name="Collapse8" parent="." index="28" instance=ExtResource( 10 )]
 position = Vector2( 4608, -832 )
 
-[node name="Collapse5" parent="." index="18" instance=ExtResource( 10 )]
+[node name="Collapse5" parent="." index="29" instance=ExtResource( 10 )]
 position = Vector2( 1824, -736 )
 
-[node name="Checkpoint" parent="." index="19" instance=ExtResource( 11 )]
+[node name="Checkpoint" parent="." index="30" instance=ExtResource( 11 )]
 position = Vector2( 2080, -448 )
 
-[node name="Checkpoint2" parent="." index="20" instance=ExtResource( 11 )]
+[node name="Checkpoint2" parent="." index="31" instance=ExtResource( 11 )]
 position = Vector2( 4768, -704 )
 
-[node name="Checkpoint3" parent="." index="21" instance=ExtResource( 11 )]
+[node name="Checkpoint3" parent="." index="32" instance=ExtResource( 11 )]
 position = Vector2( 8768, -864 )
 
-[node name="Checkpoint4" parent="." index="22" instance=ExtResource( 11 )]
+[node name="Checkpoint4" parent="." index="33" instance=ExtResource( 11 )]
 position = Vector2( 9632, -1056 )
 
-[node name="Checkpoint5" parent="." index="23" instance=ExtResource( 11 )]
+[node name="Checkpoint5" parent="." index="34" instance=ExtResource( 11 )]
 position = Vector2( 11136, -128 )
 [connection signal="body_entered" from="DoorFolder/Door/Sprite/Area2D" to="DoorFolder/Door" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="DoorFolder/Door/Sprite/Area2D" to="DoorFolder/Door" method="_on_Area2D_body_exited"]
