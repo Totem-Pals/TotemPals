@@ -1,8 +1,11 @@
 extends Node2D
 
+var OriginalPosition = Vector2()
 
 func _ready():
-	pass # Replace with function body.
+	OriginalPosition = $RigidBody2D.position
+	var BigDaddy = get_parent()
+	BigDaddy.connect("RespawnHappened", self, "again")
 	
 func _on_Area2D_body_entered(body):
 
@@ -21,3 +24,6 @@ func _on_Area2D2_body_entered(_body):
 
 func _on_Area2D2_body_exited(_body):
 	$RigidBody2D.set_deferred("mode", 2)
+	
+func again():
+	$RigidBody2D.set_deferred("position", OriginalPosition)

@@ -12,3 +12,7 @@ export var Next_scene = "res://Levels/World3.tscn"
 #
 #	var __ = get_tree().change_scene(Next_scene)
 
+
+
+func _on_LevelGate_body_entered(body):
+	print("level done")

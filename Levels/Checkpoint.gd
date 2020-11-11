@@ -25,7 +25,8 @@ func disable():
 func respawnPlayer():
 	emit_signal("reset_objects")
 	var newPlayer = playerObject.instance()
-	newPlayer.position = self.position
+	
+	newPlayer.position = self.position - Vector2(0,32)
 	get_parent().add_child(newPlayer)
 	
 	for friend in friends:

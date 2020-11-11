@@ -13,21 +13,21 @@
 [ext_resource path="res://Levels/Smashable.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/SpikeyObstacles.tscn" type="PackedScene" id=12]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
 extents = Vector2( 80, 16 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 80, 10 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 60, 124 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 28, 60 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 250, 10 )
 
 [node name="WorldFinal" instance=ExtResource( 1 )]
@@ -201,10 +201,10 @@ x_endpoint = 0
 y_endpoint = 224
 
 [node name="CollisionShape2D" parent="Moving_Platform/Node2D" index="3"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="Moving_Platform/Node2D/Area2D" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="Moving_Platform2" parent="." index="8" instance=ExtResource( 4 )]
 position = Vector2( -832, -2208 )
@@ -289,7 +289,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushingWall/Area2D" index="0"]
 position = Vector2( -352, -64 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="CrushingWall" index="2"]
 
@@ -311,14 +311,14 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushingWall2/Area2D" index="0"]
 position = Vector2( 192, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="CrushingWall2" index="2"]
 
 [node name="CrushingWall3" type="Node2D" parent="." index="18"]
 position = Vector2( 3456, -1856 )
 script = ExtResource( 8 )
-duration = 50.0
+duration = 70.0
 endpoint = Vector2( 0, 1760 )
 
 [node name="TileMap" type="TileMap" parent="CrushingWall3" index="0"]
@@ -333,7 +333,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushingWall3/Area2D" index="0"]
 position = Vector2( 256, 144 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Tween" type="Tween" parent="CrushingWall3" index="2"]
 
