@@ -72,6 +72,7 @@ func _physics_process(_delta):
 				double_jump = 1
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
+			position.y -=10
 			if(get_floor_velocity().y < 0):
 				position.y -= 1
 		if friction == true:
@@ -145,6 +146,10 @@ func update_collision_shapes():
 	$FriendCollisionArea.position.y = currentRectSize.y - ($Sprite.texture.get_height() / 2)
 	$CollisionShape2D.position.y = (currentRectSize.y / 2) - ($Sprite.texture.get_height() / 2)
 	$CollisionShape2D.shape.height = currentRectSize.y - ($CollisionShape2D.shape.radius * 2)
+	
+	
+	$SpikesArea/CollisionShape2D.position.y = (currentRectSize.y / 2) - ($Sprite.texture.get_height() / 2)
+	$SpikesArea/CollisionShape2D.shape.height = currentRectSize.y - ($SpikesArea/CollisionShape2D.shape.radius * 2)
 
 func drop_friend():
 	friends[friends.size() - 1].queue_free()
@@ -209,3 +214,7 @@ func on_death():
 	
 	lastCheckpoint.respawnPlayer()
 	queue_free()
+
+
+func _on_SpikesArea_body_entered(body):
+	on_death()

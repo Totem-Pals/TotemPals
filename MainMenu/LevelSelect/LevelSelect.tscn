@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MainMenu/LevelSelect/LevelSelect.gd" type="Script" id=1]
 [ext_resource path="res://Levels/WorldX.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/WorldFinal7.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/WorldFinal1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/WorldFinal5.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/WorldFinal6.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/WorldFinal4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/WorldFinal2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/WorldFinal3.tscn" type="PackedScene" id=9]
 
 [node name="LevelSelect" type="PanelContainer"]
 anchor_right = 1.0
@@ -10,7 +17,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-levels = [ ExtResource( 2 ), null, null, null, null, null, null, null, null, null ]
+levels = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), null, null ]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 7.0

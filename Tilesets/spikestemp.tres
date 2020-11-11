@@ -3,14 +3,14 @@
 [ext_resource path="res://Assets/spikesBottomAlt2.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 0, 32, 10.9311, 14.2352, 21.2571, 26.5148, 35.2112, 2.79285, 46.6536, 27.073, 58.375, 12.8398, 69.5383, 30.4219 )
+points = PoolVector2Array( 0, 32, 14.2065, 3.23, 28.2722, 30.0218 )
 
 [resource]
 0/name = "spikesBottomAlt2.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 38, 80, 32 )
+0/region = Rect2( 20, 36, 32, 32 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )

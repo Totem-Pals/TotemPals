@@ -39,6 +39,7 @@ tracks/1/keys = {
 [node name="Springboard" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.0941176, 0.682353, 0.027451, 1 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
