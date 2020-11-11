@@ -92,7 +92,7 @@ format = 1
 tile_data = PoolIntArray( 393234, 0, 0, 393235, 0, 0, 393236, 0, 0 )
 
 [node name="Friend" parent="." index="20" instance=ExtResource( 14 )]
-position = Vector2( 698.651, 410.362 )
+position = Vector2( 1107.33, 190.889 )
 
 [node name="RedFriend" parent="." index="21" instance=ExtResource( 15 )]
-position = Vector2( 1093.17, 193.383 )
+position = Vector2( 713.086, 406.97 )
