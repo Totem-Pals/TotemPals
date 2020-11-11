@@ -16,8 +16,9 @@ func _get_available_levels() -> int:
 func save_game():
 	var file = File.new()
 	file.open("res://saveFile.dat", File.WRITE)
-	file.store_double(levelsComplete)
+	file.store_line(to_json({"levels_complete" : levelsComplete}))
 	file.close()
+
 
 func load_game():
 	var file = File.new()
@@ -25,5 +26,5 @@ func load_game():
 		levelsComplete = -1
 		return
 	
-	levelsComplete = int(file.get_as_text())
+	levelsComplete = parse_json(file.get_line())["levels_complete"]
 	file.close()
