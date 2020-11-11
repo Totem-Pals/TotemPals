@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://MainMenu/MainMenu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu/MainMenu/MainMenuBackground.tscn" type="PackedScene" id=2]
 
 [node name="MainMenu" type="PanelContainer"]
 anchor_right = 1.0
@@ -10,32 +11,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="MainMenuBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1017.0
 margin_bottom = 593.0
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 40
 
-[node name="Content" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 266.0
-margin_right = 96.0
-margin_bottom = 334.0
+[node name="Content" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 30.0
+margin_top = 239.0
+margin_right = 119.0
+margin_bottom = 307.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="LevelSelect" type="Button" parent="Content"]
+[node name="LevelSelect" type="Button" parent="MarginContainer/Content"]
 margin_right = 89.0
 margin_bottom = 20.0
 text = "Level Select"
 
-[node name="Options" type="Button" parent="Content"]
+[node name="Options" type="Button" parent="MarginContainer/Content"]
 margin_top = 24.0
 margin_right = 89.0
 margin_bottom = 44.0
 text = "Options"
 
-[node name="Quit" type="Button" parent="Content"]
+[node name="Quit" type="Button" parent="MarginContainer/Content"]
 margin_top = 48.0
 margin_right = 89.0
 margin_bottom = 68.0
@@ -78,7 +83,7 @@ margin_top = 28.0
 margin_right = 67.0
 margin_bottom = 48.0
 text = "Done"
-[connection signal="pressed" from="Content/LevelSelect" to="." method="_on_LevelSelect_pressed"]
-[connection signal="pressed" from="Content/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Content/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="MarginContainer/Content/LevelSelect" to="." method="_on_LevelSelect_pressed"]
+[connection signal="pressed" from="MarginContainer/Content/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MarginContainer/Content/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="OptionsPopup/VBoxContainer/Done" to="." method="_on_Done_pressed"]
