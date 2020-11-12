@@ -5,5 +5,6 @@ onready var levelSelectScreen = "res://MainMenu/LevelSelect/LevelSelect.tscn"
 
 
 func _on_LevelGate_body_entered(body):
-	LevelManager.level_completed()
-	get_tree().change_scene_to(load(levelSelectScreen))
+	if(body.is_in_group("Player")):
+		LevelManager.level_completed()
+		get_tree().change_scene_to(load(levelSelectScreen))

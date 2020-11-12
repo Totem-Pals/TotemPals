@@ -12,12 +12,11 @@ func _ready():
 
 func _on_Area2D_area_entered(area):
 	var player = area.get_parent()
-	player.lastCheckpoint = self
-	
-	friends = player.friends
-	
-	self.modulate = Color.red
-	call_deferred("disable")
+	if(player.is_in_group("Player")):
+		player.lastCheckpoint = self
+		friends = player.friends
+		self.modulate = Color.red
+		call_deferred("disable")
 
 func disable():
 	$Area2D/CollisionShape2D.disabled = true

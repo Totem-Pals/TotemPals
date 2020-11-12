@@ -10,7 +10,7 @@ func _ready():
 
 func _on_Portal_body_entered(body):
 	#32 is the rect size of the current main character
-	if not body is KinematicBody2D:
+	if not body.is_in_group("Player"):
 		return
 	
 	var portal_offset = body.currentRectSize.y - 32

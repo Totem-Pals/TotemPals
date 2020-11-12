@@ -184,10 +184,13 @@ func get_num_friends() -> int:
 func shoot():
 	var bullet = load("res://Objects/Bullet.tscn")
 	var b = bullet.instance()
+	var position
 	for friend in friends:
 		if(friend.filename.get_file() ==  "GunPal.tscn"):
-			b.init(self.position.x, self.position.y + friend.position.y, $Sprite.flip_h)
-	get_parent().add_child(b)
+			get_parent().add_child(b)
+			b.init($Sprite.flip_h)
+			position = Vector2(self.position.x+5, self.position.y + friend.position.y)
+			b.set_position(position)
 	
 
 func update_abilities(totem, drop):
@@ -216,7 +219,3 @@ func on_death():
 	
 	lastCheckpoint.respawnPlayer()
 	queue_free()
-
-
-func _on_SpikesArea_body_entered(body):
-	on_death()
