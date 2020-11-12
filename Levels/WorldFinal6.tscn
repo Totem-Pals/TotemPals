@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Levels/WorldFinal00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/forest_brick2.tres" type="TileSet" id=2]
@@ -9,12 +9,13 @@
 [ext_resource path="res://Levels/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Friends/NeutralFriend/GunFriend.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Friends/NeutralFriend/GreenFriend.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Tilesets/spikestemp.tres" type="TileSet" id=10]
+[ext_resource path="res://Tilesets/newSpikes.tres" type="TileSet" id=10]
 [ext_resource path="res://Levels/Moving_Platform.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/Smashable.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Door.gd" type="Script" id=13]
-[ext_resource path="res://icon.png" type="Texture" id=14]
 [ext_resource path="res://Levels/PlatformControlled.gd" type="Script" id=15]
+[ext_resource path="res://Assets/button .png" type="Texture" id=16]
+[ext_resource path="res://Assets/button pressed .png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 10 )
@@ -453,6 +454,8 @@ position = Vector2( 3072, 448 )
 
 [node name="RemoteStuff" type="Node2D" parent="." index="42"]
 script = ExtResource( 15 )
+pressed = ExtResource( 17 )
+default = ExtResource( 16 )
 
 [node name="TileMap" type="TileMap" parent="RemoteStuff" index="0"]
 position = Vector2( -544, 0 )
@@ -479,9 +482,8 @@ rotation = 3.14159
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="RemoteStuff/PlatButton" index="1"]
-position = Vector2( 848, -64 )
-scale = Vector2( 0.6, 0.2 )
-texture = ExtResource( 14 )
+position = Vector2( 848, -80 )
+texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RemoteStuff" index="2"]
 anims/left = SubResource( 3 )
@@ -491,6 +493,8 @@ anims/right = SubResource( 5 )
 [node name="RemoteStuff2" type="Node2D" parent="." index="43"]
 position = Vector2( 672, -224 )
 script = ExtResource( 13 )
+pressed = ExtResource( 17 )
+default = ExtResource( 16 )
 
 [node name="TileMap" type="TileMap" parent="RemoteStuff2" index="0"]
 tile_set = ExtResource( 2 )
@@ -498,18 +502,17 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -262121, 0, 3, -196585, 0, 65539, -131049, 0, 131075 )
 
-[node name="Area2D" type="Area2D" parent="RemoteStuff2" index="1"]
+[node name="DoorButton" type="Area2D" parent="RemoteStuff2" index="1"]
 position = Vector2( -1248, 60 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff2/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff2/DoorButton" index="0"]
 position = Vector2( 848, -68 )
 rotation = 3.14159
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="RemoteStuff2/Area2D" index="1"]
-position = Vector2( 848, -64 )
-scale = Vector2( 0.6, 0.2 )
-texture = ExtResource( 14 )
+[node name="Sprite" type="Sprite" parent="RemoteStuff2/DoorButton" index="1"]
+position = Vector2( 848, -76 )
+texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RemoteStuff2" index="2"]
 anims/left = SubResource( 6 )
@@ -519,6 +522,8 @@ anims/right = SubResource( 8 )
 [node name="RemoteStuff3" type="Node2D" parent="." index="44"]
 position = Vector2( 2336, 1148 )
 script = ExtResource( 13 )
+pressed = ExtResource( 17 )
+default = ExtResource( 16 )
 
 [node name="TileMap" type="TileMap" parent="RemoteStuff3" index="0"]
 tile_set = ExtResource( 2 )
@@ -526,18 +531,17 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -262141, 0, 3, -196605, 0, 65539, -131069, 0, 65539, -65533, 0, 131075 )
 
-[node name="Area2D" type="Area2D" parent="RemoteStuff3" index="1"]
+[node name="DoorButton" type="Area2D" parent="RemoteStuff3" index="1"]
 position = Vector2( -1248, 60 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff3/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff3/DoorButton" index="0"]
 position = Vector2( 848, -68 )
 rotation = 3.14159
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="RemoteStuff3/Area2D" index="1"]
-position = Vector2( 848, -64 )
-scale = Vector2( 0.6, 0.2 )
-texture = ExtResource( 14 )
+[node name="Sprite" type="Sprite" parent="RemoteStuff3/DoorButton" index="1"]
+position = Vector2( 848, -72 )
+texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RemoteStuff3" index="2"]
 anims/left = SubResource( 9 )
@@ -547,6 +551,8 @@ anims/right = SubResource( 11 )
 [node name="RemoteStuff4" type="Node2D" parent="." index="45"]
 position = Vector2( 3680, 1148 )
 script = ExtResource( 13 )
+pressed = ExtResource( 17 )
+default = ExtResource( 16 )
 
 [node name="TileMap" type="TileMap" parent="RemoteStuff4" index="0"]
 tile_set = ExtResource( 2 )
@@ -554,18 +560,17 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -196637, 0, 3, -131101, 0, 65539, -65565, 0, 65539, -29, 0, 131075 )
 
-[node name="Area2D" type="Area2D" parent="RemoteStuff4" index="1"]
+[node name="DoorButton" type="Area2D" parent="RemoteStuff4" index="1"]
 position = Vector2( -1248, 60 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff4/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff4/DoorButton" index="0"]
 position = Vector2( 848, -68 )
 rotation = 3.14159
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="RemoteStuff4/Area2D" index="1"]
-position = Vector2( 848, -64 )
-scale = Vector2( 0.6, 0.2 )
-texture = ExtResource( 14 )
+[node name="Sprite" type="Sprite" parent="RemoteStuff4/DoorButton" index="1"]
+position = Vector2( 848, -72 )
+texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RemoteStuff4" index="2"]
 anims/left = SubResource( 12 )
@@ -575,6 +580,8 @@ anims/right = SubResource( 14 )
 [node name="RemoteStuff5" type="Node2D" parent="." index="46"]
 position = Vector2( 4800, 2112 )
 script = ExtResource( 13 )
+pressed = ExtResource( 17 )
+default = ExtResource( 16 )
 
 [node name="TileMap" type="TileMap" parent="RemoteStuff5" index="0"]
 position = Vector2( 0, 4 )
@@ -583,18 +590,17 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 262139, 0, 196608, 262140, 0, 196609, 262141, 0, 196609, 262142, 0, 196609, 262143, 0, 196610 )
 
-[node name="Area2D" type="Area2D" parent="RemoteStuff5" index="1"]
+[node name="DoorButton" type="Area2D" parent="RemoteStuff5" index="1"]
 position = Vector2( -1248, 60 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff5/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteStuff5/DoorButton" index="0"]
 position = Vector2( 848, -68 )
 rotation = 3.14159
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="RemoteStuff5/Area2D" index="1"]
-position = Vector2( 848, -64 )
-scale = Vector2( 0.6, 0.2 )
-texture = ExtResource( 14 )
+[node name="Sprite" type="Sprite" parent="RemoteStuff5/DoorButton" index="1"]
+position = Vector2( 848, -76 )
+texture = ExtResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RemoteStuff5" index="2"]
 anims/left = SubResource( 15 )
@@ -603,15 +609,15 @@ anims/right = SubResource( 17 )
 [connection signal="body_entered" from="RemoteStuff/PlatButton" to="RemoteStuff" method="_on_PlatButton_body_entered"]
 [connection signal="body_exited" from="RemoteStuff/PlatButton" to="RemoteStuff" method="_on_PlatButton_body_exited"]
 [connection signal="animation_finished" from="RemoteStuff/AnimationPlayer" to="RemoteStuff" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="body_entered" from="RemoteStuff2/Area2D" to="RemoteStuff2" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="RemoteStuff2/Area2D" to="RemoteStuff2" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="RemoteStuff2/DoorButton" to="RemoteStuff2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="RemoteStuff2/DoorButton" to="RemoteStuff2" method="_on_Area2D_body_exited"]
 [connection signal="animation_finished" from="RemoteStuff2/AnimationPlayer" to="RemoteStuff2" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="body_entered" from="RemoteStuff3/Area2D" to="RemoteStuff3" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="RemoteStuff3/Area2D" to="RemoteStuff3" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="RemoteStuff3/DoorButton" to="RemoteStuff3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="RemoteStuff3/DoorButton" to="RemoteStuff3" method="_on_Area2D_body_exited"]
 [connection signal="animation_finished" from="RemoteStuff3/AnimationPlayer" to="RemoteStuff3" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="body_entered" from="RemoteStuff4/Area2D" to="RemoteStuff4" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="RemoteStuff4/Area2D" to="RemoteStuff4" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="RemoteStuff4/DoorButton" to="RemoteStuff4" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="RemoteStuff4/DoorButton" to="RemoteStuff4" method="_on_Area2D_body_exited"]
 [connection signal="animation_finished" from="RemoteStuff4/AnimationPlayer" to="RemoteStuff4" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="body_entered" from="RemoteStuff5/Area2D" to="RemoteStuff5" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="RemoteStuff5/Area2D" to="RemoteStuff5" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="RemoteStuff5/DoorButton" to="RemoteStuff5" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="RemoteStuff5/DoorButton" to="RemoteStuff5" method="_on_Area2D_body_exited"]
 [connection signal="animation_finished" from="RemoteStuff5/AnimationPlayer" to="RemoteStuff5" method="_on_AnimationPlayer_animation_finished"]

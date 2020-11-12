@@ -2,7 +2,10 @@
 extends Area2D
 
 onready var levelSelectScreen = "res://MainMenu/LevelSelect/LevelSelect.tscn"
+export (Texture) var asset
 
+func _ready():
+	$Sprite.texture = asset
 
 func _on_LevelGate_body_entered(body):
 	if(body.is_in_group("Player")):

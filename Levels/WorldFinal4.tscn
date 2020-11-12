@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/WorldFinal00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Tilesets/forest_brick2.tres" type="TileSet" id=2]
@@ -6,15 +6,16 @@
 [ext_resource path="res://Levels/PushableBlock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Moving_Platform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Collapse.tscn" type="PackedScene" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Levels/Door.gd" type="Script" id=8]
 [ext_resource path="res://Levels/Springboard.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Smashable.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Checkpoint.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Tilesets/spikestemp.tres" type="TileSet" id=12]
+[ext_resource path="res://Tilesets/newSpikes.tres" type="TileSet" id=12]
+[ext_resource path="res://Assets/button .png" type="Texture" id=13]
+[ext_resource path="res://Assets/button pressed .png" type="Texture" id=14]
 
 [sub_resource type="RayShape2D" id=1]
-length = 120.0
+length = 15.9999
 
 [sub_resource type="Animation" id=2]
 resource_name = "open"
@@ -266,6 +267,8 @@ y_endpoint = 416
 [node name="Door" type="Node2D" parent="DoorFolder" index="0"]
 position = Vector2( 3008, -448 )
 script = ExtResource( 8 )
+pressed = ExtResource( 14 )
+default = ExtResource( 13 )
 
 [node name="TileMap" type="TileMap" parent="DoorFolder/Door" index="0"]
 tile_set = ExtResource( 2 )
@@ -273,14 +276,13 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 3, 65536, 0, 65539, 131072, 0, 131075 )
 
-[node name="Sprite" type="Sprite" parent="DoorFolder/Door" index="1"]
-position = Vector2( -464, 94 )
-scale = Vector2( 0.5, 0.25 )
-texture = ExtResource( 7 )
+[node name="DoorButton" type="Area2D" parent="DoorFolder/Door" index="1"]
+position = Vector2( -464, 80 )
 
-[node name="Area2D" type="Area2D" parent="DoorFolder/Door/Sprite" index="0"]
+[node name="Sprite" type="Sprite" parent="DoorFolder/Door/DoorButton" index="0"]
+texture = ExtResource( 13 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door/Sprite/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door/DoorButton" index="1"]
 rotation = 3.14159
 shape = SubResource( 1 )
 
@@ -290,6 +292,8 @@ anims/open = SubResource( 2 )
 [node name="Door2" type="Node2D" parent="DoorFolder" index="1"]
 position = Vector2( 10464, -320 )
 script = ExtResource( 8 )
+pressed = ExtResource( 14 )
+default = ExtResource( 13 )
 
 [node name="TileMap" type="TileMap" parent="DoorFolder/Door2" index="0"]
 tile_set = ExtResource( 2 )
@@ -297,14 +301,14 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 3, 65536, 0, 65539, 131072, 0, 131075 )
 
-[node name="Sprite" type="Sprite" parent="DoorFolder/Door2" index="1"]
+[node name="DoorButton" type="Area2D" parent="DoorFolder/Door2" index="1"]
 position = Vector2( 592, -72 )
-scale = Vector2( 0.5, 0.25 )
-texture = ExtResource( 7 )
 
-[node name="Area2D" type="Area2D" parent="DoorFolder/Door2/Sprite" index="0"]
+[node name="Sprite" type="Sprite" parent="DoorFolder/Door2/DoorButton" index="0"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 13 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door2/Sprite/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door2/DoorButton" index="1"]
 rotation = 3.14159
 shape = SubResource( 1 )
 
@@ -314,6 +318,8 @@ anims/open = SubResource( 3 )
 [node name="Door3" type="Node2D" parent="DoorFolder" index="2"]
 position = Vector2( 9696, -96 )
 script = ExtResource( 8 )
+pressed = ExtResource( 14 )
+default = ExtResource( 13 )
 
 [node name="TileMap" type="TileMap" parent="DoorFolder/Door3" index="0"]
 tile_set = ExtResource( 2 )
@@ -321,14 +327,14 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 3, 65536, 0, 65539, 131072, 0, 131075 )
 
-[node name="Sprite" type="Sprite" parent="DoorFolder/Door3" index="1"]
+[node name="DoorButton" type="Area2D" parent="DoorFolder/Door3" index="1"]
 position = Vector2( -176, -167 )
-scale = Vector2( 0.5, 0.25 )
-texture = ExtResource( 7 )
 
-[node name="Area2D" type="Area2D" parent="DoorFolder/Door3/Sprite" index="0"]
+[node name="Sprite" type="Sprite" parent="DoorFolder/Door3/DoorButton" index="0"]
+position = Vector2( 0, -10 )
+texture = ExtResource( 13 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door3/Sprite/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door3/DoorButton" index="1"]
 rotation = 3.14159
 shape = SubResource( 1 )
 
@@ -338,6 +344,8 @@ anims/open = SubResource( 4 )
 [node name="Door4" type="Node2D" parent="DoorFolder" index="3"]
 position = Vector2( 10560, -512 )
 script = ExtResource( 8 )
+pressed = ExtResource( 14 )
+default = ExtResource( 13 )
 
 [node name="TileMap" type="TileMap" parent="DoorFolder/Door4" index="0"]
 tile_set = ExtResource( 2 )
@@ -345,14 +353,14 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 3, 65536, 0, 65539, 131072, 0, 131075 )
 
-[node name="Sprite" type="Sprite" parent="DoorFolder/Door4" index="1"]
+[node name="DoorButton" type="Area2D" parent="DoorFolder/Door4" index="1"]
 position = Vector2( -208, 280 )
-scale = Vector2( 0.5, 0.25 )
-texture = ExtResource( 7 )
 
-[node name="Area2D" type="Area2D" parent="DoorFolder/Door4/Sprite" index="0"]
+[node name="Sprite" type="Sprite" parent="DoorFolder/Door4/DoorButton" index="0"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 13 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door4/Sprite/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorFolder/Door4/DoorButton" index="1"]
 rotation = 3.14159
 shape = SubResource( 1 )
 
@@ -377,10 +385,10 @@ totemVersion = "res://Friends/TotemPal/StrongPal.tscn"
 [node name="Collapse" parent="." index="27" instance=ExtResource( 10 )]
 position = Vector2( 1824, -1120 )
 
-[node name="Collapse2" parent="." index="28" instance=ExtResource( 10 )]
+[node name="Collapse9" parent="." index="28" instance=ExtResource( 10 )]
 position = Vector2( 1888, -1120 )
 
-[node name="Collapse3" parent="." index="29" instance=ExtResource( 10 )]
+[node name="Collapse2" parent="." index="29" instance=ExtResource( 10 )]
 position = Vector2( 1952, -1120 )
 
 [node name="Collapse4" parent="." index="30" instance=ExtResource( 10 )]
@@ -389,10 +397,10 @@ position = Vector2( 1952, -928 )
 [node name="Collapse6" parent="." index="31" instance=ExtResource( 10 )]
 position = Vector2( 4480, -832 )
 
-[node name="Collapse7" parent="." index="32" instance=ExtResource( 10 )]
+[node name="Collapse14" parent="." index="32" instance=ExtResource( 10 )]
 position = Vector2( 4544, -832 )
 
-[node name="Collapse8" parent="." index="33" instance=ExtResource( 10 )]
+[node name="Collapse15" parent="." index="33" instance=ExtResource( 10 )]
 position = Vector2( 4608, -832 )
 
 [node name="Collapse5" parent="." index="34" instance=ExtResource( 10 )]
@@ -412,11 +420,11 @@ position = Vector2( 9632, -1056 )
 
 [node name="Checkpoint5" parent="." index="39" instance=ExtResource( 11 )]
 position = Vector2( 11136, -128 )
-[connection signal="body_entered" from="DoorFolder/Door/Sprite/Area2D" to="DoorFolder/Door" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="DoorFolder/Door/Sprite/Area2D" to="DoorFolder/Door" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="DoorFolder/Door2/Sprite/Area2D" to="DoorFolder/Door2" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="DoorFolder/Door2/Sprite/Area2D" to="DoorFolder/Door2" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="DoorFolder/Door3/Sprite/Area2D" to="DoorFolder/Door3" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="DoorFolder/Door3/Sprite/Area2D" to="DoorFolder/Door3" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="DoorFolder/Door4/Sprite/Area2D" to="DoorFolder/Door4" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="DoorFolder/Door4/Sprite/Area2D" to="DoorFolder/Door4" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="DoorFolder/Door/DoorButton" to="DoorFolder/Door" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DoorFolder/Door/DoorButton" to="DoorFolder/Door" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="DoorFolder/Door2/DoorButton" to="DoorFolder/Door2" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DoorFolder/Door2/DoorButton" to="DoorFolder/Door2" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="DoorFolder/Door3/DoorButton" to="DoorFolder/Door3" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DoorFolder/Door3/DoorButton" to="DoorFolder/Door3" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="DoorFolder/Door4/DoorButton" to="DoorFolder/Door4" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DoorFolder/Door4/DoorButton" to="DoorFolder/Door4" method="_on_Area2D_body_exited"]

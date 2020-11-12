@@ -16,8 +16,8 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="LevelGate" parent="." instance=ExtResource( 2 )]
-position = Vector2( 271.075, -0.561234 )
-
 [node name="TileMap" type="TileMap" parent="."]
 format = 1
+
+[node name="LevelGate" parent="." instance=ExtResource( 2 )]
+position = Vector2( 271.075, -0.561234 )
