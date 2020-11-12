@@ -7,7 +7,7 @@ const ACCELERATION = 50
 const GLIDE_SPEED = 120
 const MAX_SPEED = 200
 const JUMP_HEIGHT = -550
-const abilities = {
+var abilities = {
 	"double_jump": false,
 	"glide": false,
 	"strong": false,
@@ -27,7 +27,7 @@ const friend_map = {
 }
 var motion = Vector2()
 var double_jump = 0
-var glide_speed = GLIDE_SPEED setget set_glide, get_glide
+var glide_speed = Vector2(0,GLIDE_SPEED) setget set_glide, get_glide
 func set_glide(speed):
 	glide_speed = speed
 func get_glide():
@@ -84,9 +84,11 @@ func _physics_process(_delta):
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
 		if has_ability("glide") and Input.is_action_pressed("ui_up"):
-			print(motion.y)
-			if glide_speed < 0 or motion.y > 0:
-				motion.y = glide_speed
+			if glide_speed.y < 0 or motion.y > 0:
+				if(glide_speed.x):
+					motion = glide_speed
+				else:
+					motion.y = glide_speed.y
 
 	motion = move_and_slide(motion,UP)
 
@@ -182,10 +184,13 @@ func get_num_friends() -> int:
 func shoot():
 	var bullet = load("res://Objects/Bullet.tscn")
 	var b = bullet.instance()
+	var position
 	for friend in friends:
 		if(friend.filename.get_file() ==  "GunPal.tscn"):
-			b.init(self.position.x, self.position.y + friend.position.y, $Sprite.flip_h)
-	get_parent().add_child(b)
+			get_parent().add_child(b)
+			b.init($Sprite.flip_h)
+			position = Vector2(self.position.x+5, self.position.y + friend.position.y)
+			b.set_position(position)
 	
 
 func update_abilities(totem, drop):
@@ -214,7 +219,3 @@ func on_death():
 	
 	lastCheckpoint.respawnPlayer()
 	queue_free()
-
-
-func _on_SpikesArea_body_entered(body):
-	on_death()

@@ -8,14 +8,13 @@ var velocity = Vector2(SPEED, 0)
 func _ready():
 	pass # Replace with function body.
 
-func init(x,y,flip):
-	$Sprite.position.x = x
-	$Sprite.position.y = y
+func init(flip):
 	$Sprite.flip_h = flip
 	if(flip):
 		velocity = Vector2(SPEED, 0)
 	else:
 		velocity = Vector2(SPEED*-1, 0)
+	self.position = Vector2(position.x, position.y)
 
 func _physics_process(delta):
 	var hit = move_and_collide(velocity * delta)
