@@ -4,6 +4,8 @@ var currentLevelIndex : int = 0
 var levelsComplete : int = 0
 var availableLevels : int = 0 setget ,_get_available_levels
 
+export(Array, PackedScene) var levels = []
+
 func level_completed():
 	if currentLevelIndex > levelsComplete:
 		levelsComplete = currentLevelIndex
