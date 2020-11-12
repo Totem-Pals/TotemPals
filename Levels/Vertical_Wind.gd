@@ -11,8 +11,8 @@ func _ready():
 
 func _on_Vertical_Wind_body_entered(body):
 	if(body.is_in_group("Player")):
-			body.glide_speed = wind_speed
+			body.glide_speed.y = wind_speed
 
 func _on_Vertical_Wind_body_exited(body):
 	if(body.is_in_group("Player")):
-		body.glide_speed =body.GLIDE_SPEED
+		body.glide_speed.y = body.GLIDE_SPEED

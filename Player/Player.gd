@@ -27,7 +27,7 @@ const friend_map = {
 }
 var motion = Vector2()
 var double_jump = 0
-var glide_speed = GLIDE_SPEED setget set_glide, get_glide
+var glide_speed = Vector2(0,GLIDE_SPEED) setget set_glide, get_glide
 func set_glide(speed):
 	glide_speed = speed
 func get_glide():
@@ -84,9 +84,11 @@ func _physics_process(_delta):
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.05)
 		if has_ability("glide") and Input.is_action_pressed("ui_up"):
-			print(motion.y)
-			if glide_speed < 0 or motion.y > 0:
-				motion.y = glide_speed
+			if glide_speed.y < 0 or motion.y > 0:
+				if(glide_speed.x):
+					motion = glide_speed
+				else:
+					motion.y = glide_speed.y
 
 	motion = move_and_slide(motion,UP)
 
