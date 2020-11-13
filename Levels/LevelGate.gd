@@ -4,10 +4,14 @@ extends Area2D
 onready var levelSelectScreen = "res://MainMenu/LevelSelect/LevelSelect.tscn"
 export (Texture) var asset
 
+
+signal levelComplete
+
 func _ready():
 	$Sprite.texture = asset
+
 
 func _on_LevelGate_body_entered(body):
 	if(body.is_in_group("Player")):
 		LevelManager.level_completed()
-		get_tree().change_scene_to(load(levelSelectScreen))
+		emit_signal("levelComplete")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Autoload/levelManager.gd" type="Script" id=1]
+[ext_resource path="res://Levels/WorldFinal5.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/WorldFinal2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/WorldFinal3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/WorldFinal6.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/WorldFinal4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/WorldFinal1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/WorldFinal7.tscn" type="PackedScene" id=8]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+levels = [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 8 ) ]
