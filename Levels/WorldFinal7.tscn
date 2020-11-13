@@ -237,3 +237,13 @@ WindLifeTime = 3
 position = Vector2( 6976, 1088 )
 rotation = -1.5708
 WindLifeTime = 3
+
+[node name="Label" type="Label" parent="." index="58"]
+margin_left = -655.387
+margin_top = 233.975
+margin_right = -532.387
+margin_bottom = 247.975
+text = "Hold Space to glide"
+__meta__ = {
+"_edit_use_anchors_": false
+}

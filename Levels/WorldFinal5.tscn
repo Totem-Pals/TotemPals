@@ -13,13 +13,13 @@
 [ext_resource path="res://Levels/Smashable.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/SpikeyObstacles.tscn" type="PackedScene" id=12]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 124 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28, 60 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 250, 10 )
 
 [node name="WorldFinal" instance=ExtResource( 1 )]
@@ -260,7 +260,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushingWall/Area2D" index="0"]
 position = Vector2( -352, -64 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Tween" type="Tween" parent="CrushingWall" index="2"]
 
@@ -282,7 +282,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushingWall2/Area2D" index="0"]
 position = Vector2( 192, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="CrushingWall2" index="2"]
 
@@ -304,7 +304,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushingWall3/Area2D" index="0"]
 position = Vector2( 256, 144 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="CrushingWall3" index="2"]
 
@@ -369,27 +369,23 @@ position = Vector2( 3456, -1184 )
 
 [node name="Spikey" parent="." index="24" instance=ExtResource( 12 )]
 position = Vector2( 1440, -2336 )
-z_index = -1
 length = 1
 duration = 3.0
 x_endpoint = 256
 
 [node name="Spikey2" parent="." index="25" instance=ExtResource( 12 )]
 position = Vector2( 1888, -2336 )
-z_index = -1
 length = 1
 duration = 8.0
 x_endpoint = 768
 
 [node name="Spikey4" parent="." index="26" instance=ExtResource( 12 )]
 position = Vector2( 2336, -2496 )
-z_index = -1
 length = 1
 x_endpoint = 320
 
 [node name="Spikey3" parent="." index="27" instance=ExtResource( 12 )]
 position = Vector2( 2208, -2496 )
-z_index = -1
 length = 1
 x_endpoint = -320
 
