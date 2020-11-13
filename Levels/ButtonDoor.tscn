@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tilesets/forest_brick2.tres" type="TileSet" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/button .png" type="Texture" id=2]
 [ext_resource path="res://Levels/Door.gd" type="Script" id=3]
+[ext_resource path="res://Assets/button pressed .png" type="Texture" id=4]
 
 [sub_resource type="RayShape2D" id=1]
 
@@ -37,6 +38,8 @@ tracks/1/keys = {
 [node name="Door" type="Node2D"]
 position = Vector2( -800, 0 )
 script = ExtResource( 3 )
+pressed = ExtResource( 4 )
+default = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -48,11 +51,11 @@ __meta__ = {
 }
 
 [node name="DoorButton" type="Area2D" parent="."]
-position = Vector2( 163.736, 88.9891 )
+position = Vector2( 164, 90 )
 collision_layer = 4
 
 [node name="Sprite" type="Sprite" parent="DoorButton"]
-scale = Vector2( 0.601803, 0.218354 )
+position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true

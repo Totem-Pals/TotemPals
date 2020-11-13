@@ -2,6 +2,7 @@ extends Sprite
 
 var friends : Array = []
 
+export(Texture) var activated
 onready var playerObject = preload("res://Player/Player.tscn")
 
 signal reset_objects
@@ -15,7 +16,7 @@ func _on_Area2D_area_entered(area):
 	if(player.is_in_group("Player")):
 		player.lastCheckpoint = self
 		friends = player.friends
-		self.modulate = Color.red
+		self.texture = activated
 		call_deferred("disable")
 
 func disable():

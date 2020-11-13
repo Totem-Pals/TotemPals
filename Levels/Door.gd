@@ -1,9 +1,8 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (Texture) var pressed
+export (Texture) var default
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +17,9 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	$AnimationPlayer.play("open")
+	$DoorButton/Sprite.texture = pressed
 
 
 func _on_Area2D_body_exited(body):
 	$AnimationPlayer.play_backwards("open")
+	$DoorButton/Sprite.texture = default
