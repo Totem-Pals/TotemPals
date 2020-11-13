@@ -89,6 +89,7 @@ func _physics_process(_delta):
 					motion = glide_speed
 				else:
 					motion.y = glide_speed.y
+				
 
 	motion = move_and_slide(motion,UP)
 
@@ -219,3 +220,7 @@ func on_death():
 	
 	lastCheckpoint.respawnPlayer()
 	queue_free()
+
+func _on_SpikesArea_body_entered(body):
+	if !body.is_in_group("Bullet"):
+		on_death()

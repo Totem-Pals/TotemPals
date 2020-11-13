@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Assets/torchnofire .png" type="Texture" id=1]
 [ext_resource path="res://Levels/Checkpoint.gd" type="Script" id=2]
+[ext_resource path="res://Assets/torch.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.8238, 31.653 )
@@ -9,6 +10,7 @@ extents = Vector2( 31.8238, 31.653 )
 [node name="Checkpoint" type="Sprite"]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+activated = ExtResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
