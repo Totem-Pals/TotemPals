@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/WindParticles.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.880682 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.507955 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 48, 5, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+scale_curve = SubResource( 3 )
+color = Color( 0.819608, 0.819608, 0.819608, 1 )
+
+[node name="Particles2D" type="Particles2D"]
+rotation = 3.14159
+amount = 20
+visibility_rect = Rect2( -200, 900, 400, -1400 )
+process_material = SubResource( 1 )
+script = ExtResource( 1 )
+WindLifeTime = 4
