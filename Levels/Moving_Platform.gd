@@ -1,5 +1,6 @@
 extends Node2D
 
+export var whichTile = 0
 export var length = 3
 export(float) var duration = 4
 export var x_endpoint = 160
@@ -20,6 +21,8 @@ onready var collision = $Node2D/CollisionShape2D
 onready var switch = $Node2D/Area2D/CollisionShape2D
 
 func _ready():
+	for i in range(5):
+		tile.set_cellv(Vector2(i,0), whichTile)
 	for i in range(5 - length):
 		tile.set_cellv(Vector2(4 - i, 0), -1)
 	tile.update_bitmask_region(Vector2(0,0), Vector2(5,0))
