@@ -49,3 +49,43 @@ y_endpoint = -288
 
 [node name="GreenFriend" parent="." index="11" instance=ExtResource( 5 )]
 position = Vector2( 2944, 1070 )
+
+[node name="Label" type="Label" parent="." index="12"]
+margin_left = 31.8198
+margin_top = 202.233
+margin_right = 255.82
+margin_bottom = 216.233
+text = "Use A and D to move left and Right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="." index="13"]
+margin_left = 769.723
+margin_top = 844.999
+margin_right = 993.723
+margin_bottom = 858.999
+text = "Use Space to jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="." index="14"]
+margin_left = 2920.0
+margin_top = 1104.0
+margin_right = 3233.0
+margin_bottom = 1118.0
+text = "Jump on friends to gain powers; like double jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="." index="15"]
+margin_left = 2512.0
+margin_top = 1200.0
+margin_right = 2736.0
+margin_bottom = 1214.0
+text = "Use Space twice to double jump "
+__meta__ = {
+"_edit_use_anchors_": false
+}
