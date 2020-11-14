@@ -17,3 +17,4 @@ func _on_NextLevel_pressed():
 			if  i + 1 >= LevelManager.levels.size():
 				return
 			get_tree().change_scene_to(LevelManager.levels[i+1])
+			return

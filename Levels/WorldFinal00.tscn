@@ -21,14 +21,12 @@ __meta__ = {
 [node name="TileMap" type="TileMap" parent="."]
 format = 1
 
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Exit_UI" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="LevelCompleteUI" parent="CanvasLayer" instance=ExtResource( 5 )]
-[connection signal="levelComplete" from="LevelGate" to="." method="_on_LevelGate_levelComplete"]
 
 [node name="LevelGate" parent="." instance=ExtResource( 2 )]
 position = Vector2( 271.075, -0.561234 )
-
+[connection signal="levelComplete" from="LevelGate" to="." method="_on_LevelGate_levelComplete"]

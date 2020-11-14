@@ -4,8 +4,9 @@
 [ext_resource path="res://Assets/crowned.png" type="Texture" id=2]
 
 [node name="LevelCompleteUI" type="PopupPanel"]
+visible = true
 margin_right = 116.0
-margin_bottom = 125.0
+margin_bottom = 157.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource( 1 )
@@ -17,7 +18,7 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 112.0
-margin_bottom = 121.0
+margin_bottom = 153.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,24 +40,28 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 2 )
 
-[node name="Restart" type="Button" parent="VBoxContainer"]
+[node name="NextLevel" type="Button" parent="VBoxContainer"]
 margin_top = 73.0
 margin_right = 108.0
 margin_bottom = 93.0
+text = "Next Level"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 97.0
+margin_right = 108.0
+margin_bottom = 101.0
+
+[node name="Restart" type="Button" parent="VBoxContainer"]
+margin_top = 105.0
+margin_right = 108.0
+margin_bottom = 125.0
 text = "Restart"
 
 [node name="BackToMenu" type="Button" parent="VBoxContainer"]
-margin_top = 97.0
+margin_top = 129.0
 margin_right = 108.0
-margin_bottom = 117.0
+margin_bottom = 149.0
 text = "Back to Menu"
-
-[node name="NextLevel" type="Button" parent="VBoxContainer"]
-margin_left = -4.0
-margin_top = -4.0
-margin_right = 8.0
-margin_bottom = 16.0
-text = "Next Level"
+[connection signal="pressed" from="VBoxContainer/NextLevel" to="." method="_on_NextLevel_pressed"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackToMenu" to="." method="_on_BackToMenu_pressed"]
-[connection signal="pressed" from="VBoxContainer/NextLevel" to="." method="_on_NextLevel_pressed"]

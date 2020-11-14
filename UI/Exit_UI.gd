@@ -1,6 +1,7 @@
 extends PopupPanel
 
 signal reset
+signal kill_player
 
 func _on_Resume_pressed():
 	self.visible = false
@@ -19,3 +20,8 @@ func _set(property, value):
 		"visible":
 			visible = value
 			popup_exclusive = !value
+
+
+func _on_PlayerDie_pressed():
+	emit_signal("kill_player")
+	visible = false

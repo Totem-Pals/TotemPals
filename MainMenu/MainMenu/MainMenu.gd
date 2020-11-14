@@ -16,3 +16,7 @@ func _on_Quit_pressed():
 
 func _on_Done_pressed():
 	$OptionsPopup.hide()
+
+
+func _on_MusicToggle_toggled(button_pressed):
+	SoundsMain.toggle_music(button_pressed)

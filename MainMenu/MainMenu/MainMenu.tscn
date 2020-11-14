@@ -47,6 +47,7 @@ margin_bottom = 68.0
 text = "Quit"
 
 [node name="OptionsPopup" type="PopupPanel" parent="."]
+visible = true
 margin_left = 474.0
 margin_top = 272.0
 margin_right = 549.0
@@ -69,13 +70,13 @@ margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="OptionsPopup/VBoxContainer/SoundSettings"]
 margin_top = 5.0
-margin_right = 39.0
+margin_right = 38.0
 margin_bottom = 19.0
-text = "Sound"
+text = "Music"
 
-[node name="CheckBox" type="CheckBox" parent="OptionsPopup/VBoxContainer/SoundSettings"]
-margin_left = 43.0
-margin_right = 67.0
+[node name="MusicToggle" type="CheckBox" parent="OptionsPopup/VBoxContainer/SoundSettings"]
+margin_left = 42.0
+margin_right = 66.0
 margin_bottom = 24.0
 
 [node name="Done" type="Button" parent="OptionsPopup/VBoxContainer"]
@@ -86,4 +87,5 @@ text = "Done"
 [connection signal="pressed" from="MarginContainer/Content/LevelSelect" to="." method="_on_LevelSelect_pressed"]
 [connection signal="pressed" from="MarginContainer/Content/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MarginContainer/Content/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="toggled" from="OptionsPopup/VBoxContainer/SoundSettings/MusicToggle" to="." method="_on_MusicToggle_toggled"]
 [connection signal="pressed" from="OptionsPopup/VBoxContainer/Done" to="." method="_on_Done_pressed"]
