@@ -217,6 +217,7 @@ func has_ability(ability):
 func on_death():
 	if lastCheckpoint == null:
 		get_parent().reset()
+		return
 	
 	lastCheckpoint.respawnPlayer()
 	queue_free()
