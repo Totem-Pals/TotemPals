@@ -17,5 +17,6 @@ func _on_NextLevel_pressed():
 		if get_parent().get_parent().filename == LevelManager.levels[i].resource_path:
 			if  i + 1 >= LevelManager.levels.size():
 				return
+				LevelManager.level_completed()
 			get_tree().change_scene_to(LevelManager.levels[i+1])
 			return

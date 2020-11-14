@@ -7,7 +7,7 @@
 length = 32.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 14, 14 )
+extents = Vector2( 16.2588, 15.8603 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "crumble"

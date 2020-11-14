@@ -12,7 +12,7 @@
 [node name="WorldFinal" instance=ExtResource( 1 )]
 
 [node name="Player" parent="." index="1"]
-position = Vector2( -288.325, 771.537 )
+position = Vector2( 91.7599, 56.7756 )
 
 [node name="TileMap" parent="." index="2"]
 tile_set = ExtResource( 2 )
