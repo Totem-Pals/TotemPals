@@ -35,5 +35,5 @@ func respawnPlayer():
 	friends = newPlayer.friends
 	
 	newPlayer.lastCheckpoint = self
-	#newPlayer.update_abilities()
-	#newPlayer.update_collision_shapes()
+	
+	get_parent().call_deferred("connect_player_kill", newPlayer)

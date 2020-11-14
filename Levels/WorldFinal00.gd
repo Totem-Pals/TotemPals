@@ -9,7 +9,7 @@ onready var levelCompleteUI = get_node("CanvasLayer/LevelCompleteUI")
 func _ready():
 	exitUI.connect("reset", self, "reset")
 	levelCompleteUI.connect("reset", self, "reset")
-	$CanvasLayer/Exit_UI.connect("kill_player", $Player, "on_death")
+	connect_player_kill()
 
 func listeningForRespawn():
 	emit_signal("RespawnHappened")
@@ -21,6 +21,8 @@ func _input(event):
 func reset():
 	get_tree().change_scene_to(load(self.filename))
 
-
 func _on_LevelGate_levelComplete():
 	levelCompleteUI.popup_centered()
+
+func connect_player_kill(var player = get_node("Player")):
+	$CanvasLayer/Exit_UI.connect("kill_player", player, "on_death")
