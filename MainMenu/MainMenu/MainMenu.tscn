@@ -47,8 +47,7 @@ margin_bottom = 68.0
 text = "Quit"
 
 [node name="OptionsPopup" type="PopupPanel" parent="."]
-visible = true
-margin_left = 474.0
+margin_left = 475.0
 margin_top = 272.0
 margin_right = 549.0
 margin_bottom = 328.0
@@ -58,14 +57,14 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsPopup"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 71.0
+margin_right = 70.0
 margin_bottom = 52.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SoundSettings" type="HBoxContainer" parent="OptionsPopup/VBoxContainer"]
-margin_right = 67.0
+margin_right = 66.0
 margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="OptionsPopup/VBoxContainer/SoundSettings"]
@@ -81,7 +80,7 @@ margin_bottom = 24.0
 
 [node name="Done" type="Button" parent="OptionsPopup/VBoxContainer"]
 margin_top = 28.0
-margin_right = 67.0
+margin_right = 66.0
 margin_bottom = 48.0
 text = "Done"
 [connection signal="pressed" from="MarginContainer/Content/LevelSelect" to="." method="_on_LevelSelect_pressed"]
